@@ -104,11 +104,11 @@ Example request/response:
 
 ### Get the information for a specific platform account.
 
-GET /raas/v1/accounts/{account_identifier}
+GET /raas/v1/accounts/{customer}/{account_identifier}
 
 Example request/response:
 
-	> GET /raas/v1/accounts/123456 HTTP/1.1
+	> GET /raas/v1/accounts/CompanyA/123456 HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -147,7 +147,7 @@ Example request/response:
 	> Content-Length: 323
 	> Content-Type: application/json
 	> 
-	{"account_identifier":"123456","amount":100000,"client_ip":"127.0.0.1","credit_card":{"number":"4111111111111111","expiration":"02/20","security_code":"123","billing_address":{"f_name":"John","l_name":"Doe","address_1":"123 Sesame St","address_2":"","city":"Smallville","state":"WA","zip":"11111","email":"test@example.com"}}}
+	{"customer":"CompanyA","account_identifier":"123456","amount":100000,"client_ip":"127.0.0.1","credit_card":{"number":"4111111111111111","expiration":"02/20","security_code":"123","billing_address":{"f_name":"John","l_name":"Doe","address_1":"123 Sesame St","address_2":"","city":"Smallville","state":"WA","zip":"11111","email":"test@example.com"}}}
 
 
 	< HTTP/1.1 200 OK
@@ -213,7 +213,7 @@ Example request/response:
 	> Content-Length: 192
 	> Content-Type: application/json
 	> 
-	{"account_identifier":"123456","recipient":{"name":"John Doe","email":"john.doe@example.com"},"sku":"TNGO-E-V-STD","amount":1000,"reward_message":"Thank you for participating in the XYZ survey.","reward_subject":"XYZ Survey, thank you..."}
+	{"customer":"CompanyA","account_identifier":"123456","recipient":{"name":"John Doe","email":"john.doe@example.com"},"sku":"TNGO-E-V-STD","amount":1000,"reward_message":"Thank you for participating in the XYZ survey.","reward_subject":"XYZ Survey, thank you..."}
 	
 	
 	< HTTP/1.1 201 Created
@@ -250,7 +250,7 @@ Example request/response:
 
 ### Retrieve a list of historical orders.
 
-GET /raas/v1/orders{?start_date,end_date,offset,limit,account_identifier}
+GET /raas/v1/orders{?start_date,end_date,offset,limit,customer,account_identifier}
 
 * All inputs are optional.
  * start_date / end_date : datetimes (ISO 8601) between which to search
@@ -260,7 +260,7 @@ GET /raas/v1/orders{?start_date,end_date,offset,limit,account_identifier}
 
 Example request/response:
 
-	> GET /raas/v1/orders?start_date=2013-03-01T00:00:00-08:00&end_date=2013-04-01T00:00:00-08:00&offset=0&limit=2&account_identifier=123456 HTTP/1.1
+	> GET /raas/v1/orders?start_date=2013-03-01T00:00:00-08:00&end_date=2013-04-01T00:00:00-08:00&offset=0&limit=2&account_identifier=123456&company=companya HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -434,7 +434,7 @@ An account was created.
 
 * **HTTP Status Code:** 201 Created
 * **HTTP Headers:** 
-	* Location: https://integration-tangocard.com/raas/v1/accounts/{account_identifier}
+	* Location: https://integration-tangocard.com/raas/v1/accounts/{customer}/{account_identifier}
 * **Response Object:** 
 	* success : (boolean)
 	* identifier : (string) The identifier for this account.
@@ -481,6 +481,7 @@ An order was created.
 	* success : (boolean)
 	* order : (object) Defined by:
 		* order_id : (string) The id that the order can be referenced by in the future.
+		* customer : (string) The customer associated with this account.
 		* account_identifier : (string) The account used to place this order.
 		* sku : (string) The reward that was purchsed.
 		* amount : (int) The value of the reward that was purchased
@@ -510,6 +511,7 @@ A list of orders.
 	* success : (boolean)
 	* orders : (array) An array of order objects, defined by:
 		* order_id : (string) The id that the order can be referenced by in the future.
+		* customer : (string) The customer associated with this account.
 		* account_identifier : (string) The account used to place this order.
 		* sku : (string) The reward that was purchsed.
 		* amount : (int) The value of the reward that was purchased
@@ -531,6 +533,7 @@ A single order.
 	* success : (boolean)
 	* order : (object) Defined by:
 		* order_id : (string) The id that the order can be referenced by in the future.
+		* customer : (string) The customer associated with this account.
 		* account_identifier : (string) The account used to place this order.
 		* sku : (string) The reward that was purchsed.
 		* amount : (int) The value of the reward that was purchased
