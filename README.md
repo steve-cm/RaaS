@@ -42,7 +42,7 @@
 
 ## What is RaaS
 
-TODO: fill this out.
+With our RaaS™ API you can elegantly knit a sophisticated rewards program into your platform. Create an account, fund an account, manage catalog, send rewards, and get order history - all available on demand, real time, and as a service.
 
 
 ## System-wide Notes
