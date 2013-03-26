@@ -44,6 +44,8 @@
 
 With our RaaS™ API you can elegantly knit a sophisticated rewards program into your platform. Create an account, fund an account, manage catalog, send rewards, and get order history - all available on demand, real time, and as a service.
 
+[What is RaaS - a presentation](https://skydrive.live.com/embed?cid=FF0E8C34925BE2F1&resid=FF0E8C34925BE2F1%21108&authkey=AOVntK1PZ5FYp5Y&em=2)
+
 
 ## System-wide Notes
 
