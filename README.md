@@ -435,7 +435,7 @@ An account was created.
 
 * **HTTP Status Code:** 201 Created
 * **HTTP Headers:** 
-	* Location: https://integration-tangocard.com/raas/v1/accounts/{customer}/{account_identifier}
+	* Location: https://integration-api.tangocard.com/raas/v1/accounts/{customer}/{account_identifier}
 * **Response Object:** 
 	* success : (boolean)
 	* identifier : (string) The identifier for this account.
@@ -477,7 +477,7 @@ An order was created.
 
 * **HTTP Status Code:** 201 Created
 * **HTTP Headers:** 
-	* Location: https://integration-tangocard.com/raas/v1/{order_id}
+	* Location: https://integration-api.tangocard.com/raas/v1/{order_id}
 * **Response Object:** 
 	* success : (boolean)
 	* order : (object) Defined by:
