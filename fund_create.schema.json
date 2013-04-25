@@ -3,6 +3,12 @@
 	"title":"Fund a platform's account.",
 	"type":"object",
 	"properties":{
+		"customer":{
+			"description":"The platform's customer.",
+			"type":"string",
+			"minLength":3,
+			"maxLength":96
+		},
 		"account_identifier":{
 			"description":"The identifier for the platform account to fund.",
 			"type":"string",
@@ -88,6 +94,8 @@
 						"email":{
 							"description":"The email address.",
 							"type":"string",
+							"minLength":5,
+							"maxLength":255,
 							"pattern":"^\\S+@\\S+$"
 						}
 					},
