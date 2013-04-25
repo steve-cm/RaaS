@@ -70,13 +70,13 @@
 							"maxLength":60
 						},
 						"city":{
-							"description":"The city of the customer's billing address.",
+							"description":"The city/town of the customer's billing address.",
 							"type":"string",
 							"minLength":1,
 							"maxLength":40
 						},
 						"state":{
-							"description":"The state of the customer's billing address. Up to 40 characters (no symbols) or a FIPS state alpha code (e.g. AL, WA, etc).",
+							"description":"The state/province/territory of the customer's billing address. Up to 40 characters. May be standard abbreviation (such as 'WA' for Washington) or the full name.",
 							"type":"string",
 							"minLength":1,
 							"maxLength":40
@@ -88,7 +88,7 @@
 							"maxLength":20
 						},
 						"country":{
-							"description":"The country of the customer's billing address.",
+							"description":"The country of the customer's billing address. Preference toward ISO_3166-1_alpha-3 country codes, but long names may be used too. Country will default to 'USA' if not present.",
 							"type":"string",
 							"minLength":1,
 							"maxLength":60,
