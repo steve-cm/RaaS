@@ -87,7 +87,7 @@ Example request/response:
 	> Host: integration-api.tangocard.com
 	> Accept: */*
 	> Content-Length: 72
-	> Content-Type: application/x-www-form-urlencoded
+	> Content-Type: application/json
 	>
 	{"identifier":"123456","email":"demo@example.com","customer":"CompanyA"} 
 
