@@ -89,7 +89,11 @@ Example request/response:
 	> Content-Length: 72
 	> Content-Type: application/json
 	>
-	{"identifier":"123456","email":"demo@example.com","customer":"CompanyA"} 
+	{
+		"identifier": "123456",
+		"email"     : "demo@example.com",
+		"customer"  : "CompanyA"
+	}
 
 
 	< HTTP/1.1 201 Created
@@ -97,7 +101,15 @@ Example request/response:
 	< Location: https://integration-api.tangocard.com/raas/v1/accounts/123456
 	< Content-Length: 118
 	< 
-	{"success":true,"account":{"identifier":"123456","email":"demo@example.com","customer":"CompanyA","available_balance":0}}
+	{
+		"success": true,
+		"account": {
+			"identifier"       : "123456",
+			"email"            : "demo@example.com",
+			"customer"         : "CompanyA",
+			"available_balance": 0
+		}
+	}
 
 
 
@@ -120,7 +132,15 @@ Example request/response:
 	< Content-Type: application/json; charset=utf-8
 	< Content-Length: 112
 	< 
-	{"success":true,"account":{"identifier":"123456","email":"demo@example.com","customer":"CompanyA","available_balance":0}}
+	{
+		"success": true,
+		"account": {
+			"identifier"       : "123456",
+			"email"            : "demo@example.com",
+			"customer"         : "CompanyA",
+			"available_balance": 0
+		}
+	}
 
 
 
@@ -148,14 +168,38 @@ Example request/response:
 	> Content-Length: 323
 	> Content-Type: application/json
 	> 
-	{"customer":"CompanyA","account_identifier":"123456","amount":100000,"client_ip":"127.0.0.1","credit_card":{"number":"4111111111111111","expiration":"02/20","security_code":"123","billing_address":{"f_name":"John","l_name":"Doe","address":"123 Sesame St, Apt 1","city":"Smallville","state":"WA","country":"USA","zip":"11111","email":"test@example.com"}}}
+	{
+		"customer"          : "CompanyA",
+		"account_identifier": "123456",
+		"amount"            : 100000,
+		"client_ip"         : "127.0.0.1",
+		"credit_card"       : {
+		    "number"         : "4111111111111111",
+		    "expiration"     : "02/20",
+		    "security_code"  : "123",
+		    "billing_address": {
+		        "f_name" : "John",
+		        "l_name" : "Doe",
+		        "address": "123 Sesame St, Apt 1",
+		        "city"   : "Smallville",
+		        "state"  : "WA",
+		        "country": "USA",
+		        "zip"    : "11111",
+		        "email"  : "test@example.com"
+		    }
+		}
+	}
 
 
 	< HTTP/1.1 200 OK
 	< Content-Type: application/json; charset=utf-8
 	< Content-Length: 71
 	<
-	{"success":true,"fund_id":"RF11-22222222-33","amount":100000}
+	{
+		"success": true,
+		"fund_id": "RF11-22222222-33",
+		"amount" : 100000
+	}
 
 
 
@@ -186,7 +230,65 @@ Example request/response:
 	< HTTP/1.1 200 OK
 	< Content-Type: application/json; charset=utf-8
 	< 
-	{"success":true,"brands":[{"description":"Tango Card","rewards":[{"description":"Tango Card E-Custom","sku":"TNGO-E-V-STD","currency_type":"USD","unit_price":-1,"available":true,"min_price":"100","max_price":"100000"}]},{"description":"Amazon.com","rewards":[{"description":"Amazon E-Gift Card Custom","sku":"AMZN-E-V-STD","currency_type":"USD","unit_price":-1,"available":true,"min_price":"100","max_price":"100000"}]},{"description":"Apple iTunes","rewards":[{"description":"iTunes E-Gift Card $15","sku":"APPL-E-1500-STD","currency_type":"USD","unit_price":1500,"available":true},{"description":"iTunes E-Gift Card $25","sku":"APPL-E-2500-STD","currency_type":"USD","unit_price":2500,"available":true},{"description":"iTunes E-Gift Card $50","sku":"APPL-E-5000-STD","currency_type":"USD","unit_price":5000,"available":true}]}]}
+	{
+		"success": true,
+		"brands" : [
+		    {
+		        "description": "Tango Card",
+		        "rewards"    : [
+		            {
+		                "description"  : "Tango Card E-Custom",
+		                "sku"          : "TNGO-E-V-STD",
+		                "currency_type": "USD",
+		                "unit_price"   : -1,
+		                "available"    : true,
+		                "min_price"    : "100",
+		                "max_price"    : "100000"
+		            }
+		        ]
+		    },
+		    {
+		        "description": "Amazon.com",
+		        "rewards"    : [
+		            {
+		                "description"  : "Amazon E-Gift Card Custom",
+		                "sku"          : "AMZN-E-V-STD",
+		                "currency_type": "USD",
+		                "unit_price"   : -1,
+		                "available"    : true,
+		                "min_price"    : "100",
+		                "max_price"    : "100000"
+		            }
+		        ]
+		    },
+		    {
+		        "description": "Apple iTunes",
+		        "rewards"    : [
+		            {
+		                "description"  : "iTunes E-Gift Card $15",
+		                "sku"          : "APPL-E-1500-STD",
+		                "currency_type": "USD",
+		                "unit_price"   : 1500,
+		                "available"    : true
+		            },
+		            {
+		                "description"  : "iTunes E-Gift Card $25",
+		                "sku"          : "APPL-E-2500-STD",
+		                "currency_type": "USD",
+		                "unit_price"   : 2500,
+		                "available"    : true
+		            },
+		            {
+		                "description"  : "iTunes E-Gift Card $50",
+		                "sku"          : "APPL-E-5000-STD",
+		                "currency_type": "USD",
+		                "unit_price"   : 5000,
+		                "available"    : true
+		            }
+		        ]
+		    }
+		]
+	}
 
 
 
@@ -214,7 +316,19 @@ Example request/response:
 	> Content-Length: 192
 	> Content-Type: application/json
 	> 
-	{"customer":"CompanyA","account_identifier":"123456","recipient":{"name":"John Doe","email":"john.doe@example.com"},"sku":"TNGO-E-V-STD","amount":1000,"reward_message":"Thank you for participating in the XYZ survey.","reward_subject":"XYZ Survey, thank you...","reward_from":"Jon Survey Doe"}
+	{
+		"customer"          : "CompanyA",
+		"account_identifier": "123456",
+		"recipient"         : {
+		    "name" : "John Doe",
+		    "email": "john.doe@example.com"
+		},
+		"sku"               : "TNGO-E-V-STD",
+		"amount"            : 1000,
+		"reward_message"    : "Thank you for participating in the XYZ survey.",
+		"reward_subject"    : "XYZ Survey, thank you...",
+		"reward_from"       : "Jon Survey Doe"
+	}
 	
 	
 	< HTTP/1.1 201 Created
@@ -222,7 +336,23 @@ Example request/response:
 	< Location: https://integration-api.tangocard.com/raas/v1/orders/
 	< Content-Length: 297
 	< 
-	{"success":true,"order":{"order_id":"123-12345678-12","account_identifier":"12345678","sku":"TNGO-E-V-STD","amount":1000,"reward_message":"Thank you for participating in the XYZ survey.","reward_subject":"XYZ Survey, thank you...","reward_from":"Jon Survey Doe","delivered_at":"2013-03-12T15:17:16+00:00","recipient":{"name":"John Doe","email":"john.doe@example.com"}}}
+	{
+		"success": true,
+		"order"  : {
+		    "order_id"          : "123-12345678-12",
+		    "account_identifier": "12345678",
+		    "sku"               : "TNGO-E-V-STD",
+		    "amount"            : 1000,
+		    "reward_message"    : "Thank you for participating in the XYZ survey.",
+		    "reward_subject"    : "XYZ Survey, thank you...",
+		    "reward_from"       : "Jon Survey Doe",
+		    "delivered_at"      : "2013-03-12T15:17:16+00:00",
+		    "recipient"         : {
+		        "name" : "John Doe",
+		        "email": "john.doe@example.com"
+		    }
+		}
+	}
 
 
 
@@ -244,7 +374,23 @@ Example request/response:
 	< Content-Type: application/json; charset=utf-8
 	< Content-Length: 297
 	< 
-	{"success":true,"order":{"order_id":"123-12345678-12","account_identifier":"12345678","sku":"TNGO-E-V-STD","amount":1000,"reward_message":"Thank you for participating in the XYZ survey.","reward_subject":"XYZ Survey, thank you...","reward_from":"Jon Survey Doe","delivered_at":"2013-03-12T15:17:16+00:00","recipient":{"name":"John Doe","email":"john.doe@example.com"}}}
+	{
+		"success": true,
+		"order"  : {
+		    "order_id"          : "123-12345678-12",
+		    "account_identifier": "12345678",
+		    "sku"               : "TNGO-E-V-STD",
+		    "amount"            : 1000,
+		    "reward_message"    : "Thank you for participating in the XYZ survey.",
+		    "reward_subject"    : "XYZ Survey, thank you...",
+		    "reward_from"       : "Jon Survey Doe",
+		    "delivered_at"      : "2013-03-12T15:17:16+00:00",
+		    "recipient"         : {
+		        "name" : "John Doe",
+		        "email": "john.doe@example.com"
+		    }
+		}
+	}
 
 
 
@@ -272,7 +418,38 @@ Example request/response:
 	< Content-Type: application/json; charset=utf-8
 	< Content-Length: 603
 	< 
-	{"success":true,"orders":[{"order_id":"123-12345678-00","account_identifier":"12345678","sku":"TNGO-E-V-STD","amount":1000,"reward_message":"Thank you for participating in the ABC survey.","reward_subject":null,"delivered_at":"2013-03-11T22:20:56+00:00","recipient":{"name":"John Doe","email":"john.doe@example.com"}},{"order_id":"123-12345678-12","account_identifier":"12345678","sku":"TNGO-E-V-STD","amount":1000,"reward_message":"Thank you for participating in the XYZ survey.","reward_subject":"XYZ Survey, thank you...","reward_from":"Jon Survey Doe","delivered_at":"2013-03-12T15:17:16+00:00","recipient":{"name":"John Doe","email":"john.doe@example.com"}}]}
+	{
+		"success": true,
+		"orders" : [
+		    {
+		        "order_id"          : "123-12345678-00",
+		        "account_identifier": "12345678",
+		        "sku"               : "TNGO-E-V-STD",
+		        "amount"            : 1000,
+		        "reward_message"    : "Thank you for participating in the ABC survey.",
+		        "reward_subject"    : null,
+		        "delivered_at"      : "2013-03-11T22:20:56+00:00",
+		        "recipient"         : {
+		            "name" : "John Doe",
+		            "email": "john.doe@example.com"
+		        }
+		    },
+		    {
+		        "order_id"          : "123-12345678-12",
+		        "account_identifier": "12345678",
+		        "sku"               : "TNGO-E-V-STD",
+		        "amount"            : 1000,
+		        "reward_message"    : "Thank you for participating in the XYZ survey.",
+		        "reward_subject"    : "XYZ Survey, thank you...",
+		        "reward_from"       : "Jon Survey Doe",
+		        "delivered_at"      : "2013-03-12T15:17:16+00:00",
+		        "recipient"         : {
+		            "name" : "John Doe",
+		            "email": "john.doe@example.com"
+		        }
+		    }
+		]
+	}
 
 
 
