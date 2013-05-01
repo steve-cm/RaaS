@@ -59,6 +59,13 @@
 			"maxLength":255,
 			"optional":true
 		},
+		"reward_from":{
+			"description":"An optional 'from name' to display to the recipient.",
+			"type":"string",
+			"minLength":0,
+			"maxLength":255,
+			"optional":true
+		},
 		"send_reward":{
 			"description":"Whether Tango Card should send the reward. If this is false the returned object will contain the order details. Defaults to true.",
 			"type":"boolean",
