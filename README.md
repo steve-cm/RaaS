@@ -39,6 +39,9 @@
 		- [Order List](#order-list)
 		- [Order](#order)
 		- [Rewards List](#rewards-list)
+- [Troubleshooting](#troubleshooting)
+	- [Communicatin Problems](#communicatin-problems)
+		- [SSL/TLS](#ssltls)
 
 ## What is RaaS
 
@@ -567,4 +570,34 @@ A list of rewards.
 		
 		
 		
-	
+# Troubleshooting
+
+## Communicatin Problems
+
+### SSL/TLS
+Server environments are often set up to only trust the absolute minimum number of Certificate Authorities they can get away with. As such, many environments may not have the certificates available to allow your application to validate our certificates. As all communication with Tango Card's RaaS API is handled over SSL, not having the certificate chain in place to allow you to validate our cert will (at best) disallow communication or (at worst) expose you to the potential for [main-in-the-middle attacks](http://en.wikipedia.org/wiki/Man-in-the-middle_attack). Thus, it is essential that the environment be set up to allow for safe SSL communication.
+
+There are a few ways to acheive this (like adding the CA's cert to the system's trusted list), but probably the easiest (and most portable) would be to include the certificate in your application. The Certificate Authority that issued our server certificates is [DigiCert](https://www.digicert.com/), and we have one of their *DigiCert High Assurance CA-3* certs. You can get DigiCert's root and intermediate certificates from [https://www.digicert.com/digicert-root-certificates.htm](their site). Alternatively, you can download the entire chain needed [here](ssl/tangocard_digicert_chain.pem) in PEM format.
+
+Once you have the certificate in hand it will need to be referenced from your application's code. The details on how to do this are highly specific to the library being used to make the connection, but here are a few examples to demonstrate the idea:
+
+```ruby
+# Ruby (using net/https)
+https = Net::HTTP.new('integration-api.tangocard.com', 443) 
+https.use_ssl = true 
+https.verify_mode = OpenSSL::SSL::VERIFY_PEER 
+https.ca_file = File.join(File.dirname(__FILE__), "../ca_certs/tangocard_digicert_chain.pem") 
+https.request_get('/fake/example')
+```
+
+```php
+// PHP (using curl)
+$curl = curl_init('https://integration-api.tangocard.com/fake/example');
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_CAINFO, __DIR__ . "../ca_certs/tangocard_digicert_chain.pem");
+curl_exec($curl);
+```
+
+
+One thing to take note of in both examples is that OpenSSL is being instructed to **VERIFY PEER**. This setting is essential as without it you will know that your communication is encrypted, but you won't know who it is you're talking to.
+
