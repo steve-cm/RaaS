@@ -407,10 +407,11 @@ GET /raas/v1/orders{?start_date,end_date,offset,limit,customer,account_identifie
  * offset : How far into the resultset to start.
  * limit : How many to return (maximum of 100).
  * account_identifier : Filter to only a single platform account.
+ * customer : Filter only to a single customer.
 
 Example request/response:
 
-	> GET /raas/v1/orders?start_date=2013-03-01T00:00:00-08:00&end_date=2013-04-01T00:00:00-08:00&offset=0&limit=2&account_identifier=12345678&company=CompanyA HTTP/1.1
+	> GET /raas/v1/orders?start_date=2013-03-01T00:00:00-08:00&end_date=2013-04-01T00:00:00-08:00&offset=0&limit=2&account_identifier=12345678&customer=CompanyA HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
