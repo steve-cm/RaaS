@@ -30,13 +30,13 @@
 					"description":"The email address of the recipient.",
 					"type":"string",
 					"pattern":"^\\S+@\\S+$"
-				},
+				}
 			},
 			"required":["name","email"]
 		},
 		"sku":{
 			"description":"The SKU identifying the reward to be purchased.",
-			"type":"string",
+			"type":"string"
 		},
 		"amount":{
 			"description":"The desired amount (for variable-priced SKUs) of the reward. Must be present for variable-price SKUs, must not be present for static-price SKUs.",
