@@ -238,6 +238,7 @@ Example request/response:
 		"brands" : [
 			{
 				"description": "Tango Card",
+				"image_url": "http://static.tangocard.com/graphics/item-images/tango-card-gift-card.png",
 				"rewards"    : [
 					{
 						"description"  : "Tango Card E-Custom",
@@ -252,6 +253,7 @@ Example request/response:
 			},
 			{
 				"description": "Amazon.com",
+				"image_url": "http://static.tangocard.com/graphics/item-images/amazon-gift-card.png",
 				"rewards"    : [
 					{
 						"description"  : "Amazon E-Gift Card Custom",
@@ -266,6 +268,7 @@ Example request/response:
 			},
 			{
 				"description": "Apple iTunes",
+				"image_url": "http://static.tangocard.com/graphics/item-images/itunes-gift-card.png",
 				"rewards"    : [
 					{
 						"description"  : "iTunes E-Gift Card $15",
