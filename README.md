@@ -786,3 +786,4 @@ curl_exec($curl);
 
 One thing to take note of in both examples is that OpenSSL is being instructed to **VERIFY PEER**. This setting is essential as without it you will know that your communication is encrypted, but you won't know who it is you're talking to.
 
+Note: We use a wild-card certificate from DigiCert and hence the certificate chain is the same for both Sandbox (https://sandbox.tangocard.com) and Production (https://api.tangocard.com) environments.
