@@ -19,7 +19,7 @@
 		"amount":{
 			"description":"The amount to add to the account (and thus, charge the credit card), in cents.",
 			"type":"number",
-			"minimum":1000,
+			"minimum":100,
 			"maximum":500000
 		},
 		"client_ip":{
