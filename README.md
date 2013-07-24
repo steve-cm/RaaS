@@ -4,17 +4,24 @@
 Please email sdk@tangocard.com to receive credentials for the RaaS API Sandbox environment. 
 The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1/
 
-## RaaS API Test Console
+## Test drive the RaaS API
+
+### RaaS API Test Console
 To test drive the RaaS API without even writing a single line of code, you can visit the 
 [RaaS API Test Console](https://integration-www.tangocard.com/test_raas_api). 
 
 Using the Test Console you can go through each resource supported by the RaaS API, 
 the requests and the responses for each of these resources.
 
+### Mashape
+You can also test drive the RaaS API (albiet only against our Production environment) on 
+[Rewards as a Service](https://www.mashape.com/tangocard/rewards-as-a-service/) on Mashape
+
 ## Production credentials
 Once you are ready to move to production, you need to agree to the [RaaS API Terms & Conditions](https://creator.zoho.com/shighet/raas-api-agreement/form-perma/RaaS_API_Agreement/U12njtAWxArN6VnavC92RTZkw2kUOQhbkZxKsKD0jHAOqFwxvQRSQKfU2xW8xytQuMPHUafDD3P0vnsXVKDYAjOOR3qHOdq7kQHr/). 
 Once you agree to the Terms & Conditions, we will create credentials on the Production environment and follow up with you. 
 The endpoint for the RESTful interface on the Production environment is https://api.tangocard.com/raas/v1/
+
 
 ## Table of Contents
 
