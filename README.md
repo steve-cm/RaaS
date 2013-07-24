@@ -8,7 +8,7 @@ The endpoint for the RESTful interface on the Sandbox environment is https://san
 To test drive the RaaS API without even writing a single line of code, you can visit the 
 [RaaS API Test Console](https://integration-www.tangocard.com/test_raas_api). 
 
-Using the Test Console you can go through each resource supported the RaaS API, 
+Using the Test Console you can go through each resource supported by the RaaS API, 
 the requests and the responses for each of these resources.
 
 ## Production credentials
