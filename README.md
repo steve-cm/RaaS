@@ -6,6 +6,8 @@
 Please email sdk@tangocard.com to receive credentials for the RaaS API Sandbox environment. 
 The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1/
 
+Any Tango Cards purchased on the Sandbox environment can be redeemed on the [Tango Card Sandbox website](https://integration-www.tangocard.com/)
+
 ## Test drive the RaaS API
 
 You have couple of options to test drive the RaaS API without even writing a single line of code.
