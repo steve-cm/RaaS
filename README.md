@@ -13,7 +13,7 @@ To review the end-to-end user experience, any Tango Cards purchased on the Sandb
 You have couple of options to test drive the RaaS API without even writing a single line of code.
 
 ### RaaS API Test Console
-One way to test drive the RaaS API, you can visit the 
+One way to test drive the RaaS API, youb can visit the 
 [RaaS API Test Console](https://integration-www.tangocard.com/test_raas_api). 
 
 Using the Test Console you can go through each resource supported by the RaaS API, 
@@ -28,6 +28,12 @@ Once you are ready to move to production, you need to agree to the [RaaS API Ter
 Once you agree to the Terms & Conditions, we will create credentials on the Production environment and follow up with you. 
 The endpoint for the RESTful interface on the Production environment is https://api.tangocard.com/raas/v1/
 
+## TangoCard.com credentials and RaaS credentials
+Our previous version of the API uses credentials (username and password) created on TangoCard.com
+
+However, the RaaS API uses a Platform name and a Platform key that needs to be created for you. 
+
+You can't mix the credentials for TangoCard.com site with the credentials for the RaaS API.
 
 ## Table of Contents
 
