@@ -13,7 +13,7 @@ To review the end-to-end user experience, any Tango Cards purchased on the Sandb
 You have couple of options to test drive the RaaS API without even writing a single line of code.
 
 ### RaaS API Test Console
-One way to test drive the RaaS API, youb can visit the 
+One way to test drive the RaaS API, you can visit the 
 [RaaS API Test Console](https://integration-www.tangocard.com/test_raas_api). 
 
 Using the Test Console you can go through each resource supported by the RaaS API, 
