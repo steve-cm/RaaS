@@ -108,5 +108,5 @@
 			"required":["number","expiration","security_code","billing_address"]
 		}
 	},
-	"required":["customer","account_identifier","amount","client_ip","credit_card"]
+	"required":["customer","account_identifier","amount","credit_card"]
 }
