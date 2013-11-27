@@ -1,6 +1,6 @@
-# Tango Card - Rewards as a Service
+# Tango Card - Rewards as a Service&trade;
 
-# RaaS API - Version 1 
+# RaaS&reg; API - Version 1 
 
 ## Sandbox credentials
 Please email sdk@tangocard.com to receive credentials for the RaaS API Sandbox environment. 
@@ -80,7 +80,7 @@ You can't mix the credentials for TangoCard.com site with the credentials for th
 
 ## What is RaaS
 
-With our RaaS™ API you can elegantly knit a sophisticated rewards program into your platform. Create an account, fund an account, manage catalog, send rewards, and get order history - all available on demand, real time, and as a service.
+With our RaaS&reg; API you can elegantly knit a sophisticated rewards program into your platform. Create an account, fund an account, manage catalog, send rewards, and get order history - all available on demand, real time, and as a service.
 
 
 ## System-wide Notes
