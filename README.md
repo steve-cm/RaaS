@@ -510,7 +510,7 @@ Example request/response:
 * The generic errors can be triggered by any (multiple) calls.
 * Many errors will have a field called "error_message" which can be used to give more information as to why it failed (for debugging, not displaying to end-users).
 
-
+Please ensure that the response body is read to get more information on an error condition. Some HTTP client libraries may choose to not read the response body in case of any errors (4xx or 5xx). 
 
 
 ### Authentication Needed
