@@ -731,6 +731,10 @@ A list of orders.
 * **HTTP Status Code:** 200 OK
 * **Response Object:** 
 	* success : (boolean)
+	* offset : (int) Defaults to 0 if not provided
+	* limit : (int) Defaults to 100 if not provided (and can't be more than 100)
+	* total_count : (int) Total number of all the orders placed against the given account (>= result_count)
+	* result_count : (int) Count of orders returned (<= total_count)
 	* orders : (array) An array of order objects, defined by:
 		* order_id : (string) The id that the order can be referenced by in the future.
 		* customer : (string) The customer associated with this account.
