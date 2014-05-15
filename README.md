@@ -500,7 +500,7 @@ Example request/response:
 
 # Responses
 
-* All responses will have a field called "success" which is a boolean to denote high-level success/failure.
+* All responses will have a field called "success" which is a Boolean to denote high-level success/failure.
 
 
 
@@ -705,7 +705,7 @@ An order was created.
 		* order_id : (string) The id that the order can be referenced by in the future.
 		* customer : (string) The customer associated with this account.
 		* account_identifier : (string) The account used to place this order.
-		* sku : (string) The reward that was purchsed.
+		* sku : (string) The reward that was purchased.
 		* amount : (int) The value of the reward that was purchased
 		* reward_message : (string|null) The message (to the recipient) that was associated with this order.
 		* reward_subject : (string|null) The subject for the reward email, if it was set.
