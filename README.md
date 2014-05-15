@@ -20,7 +20,7 @@ Using the Test Console you can go through each resource supported by the RaaS AP
 the requests and the responses for each of these resources.
 
 ### Mashape
-Another way to test drive the RaaS API (albiet only against our Production environment) is 
+Another way to test drive the RaaS API (albeit only against our Production environment) is 
 [Rewards as a Service](https://www.mashape.com/tangocard/rewards-as-a-service/) page on Mashape.
 
 ## Production credentials
@@ -75,7 +75,7 @@ You can't mix the credentials for TangoCard.com site with the credentials for th
 		- [Order](#order)
 		- [Rewards List](#rewards-list)
 - [Troubleshooting](#troubleshooting)
-	- [Communicatin Problems](#communicatin-problems)
+	- [Communication Problems](#communicatin-problems)
 		- [SSL/TLS](#ssltls)
 
 ## What is RaaS
