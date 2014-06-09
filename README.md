@@ -828,3 +828,5 @@ One thing to take note of in both examples is that OpenSSL is being instructed t
 Note: We use a wild-card certificate from DigiCert and hence the certificate chain is the same for both Sandbox (https://sandbox.tangocard.com) and Production (https://api.tangocard.com) environments.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0d99126c1cf8686391099d328e3c2363 "githalytics.com")](http://githalytics.com/github.com/tangocarddev)
+
+<img height='1' width='1' border='0' src='Https://www.clickmeter.com/conversion.aspx?id=DA1A71157B29421C874CA3B6AEB6F02E&val=0.00&param=empty&com=0.00' />
