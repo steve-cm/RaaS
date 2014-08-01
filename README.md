@@ -10,7 +10,7 @@ To review the end-to-end user experience, any Tango Cards purchased on the Sandb
 
 ## Test drive the RaaS API
 
-You have couple of options to test drive the RaaS API without even writing a single line of code.
+You have couple of options to test drive the RaaS API without writing a single line of code.
 
 ### RaaS API Test Console
 One way to test drive the RaaS API, you can visit the 
@@ -31,7 +31,7 @@ The endpoint for the RESTful interface on the Production environment is https://
 ## TangoCard.com credentials and RaaS credentials
 Our previous version of the API uses credentials (username and password) created on TangoCard.com
 
-However, the RaaS API uses a Platform name and a Platform key that needs to be created for you. 
+However, the RaaS API uses a Platform name and a Platform key that need to be created for you. 
 
 You can't mix the credentials for TangoCard.com site with the credentials for the RaaS API.
 
@@ -46,7 +46,9 @@ You can't mix the credentials for TangoCard.com site with the credentials for th
 		- [Create a new platform account](#create-a-new-platform-account)
 		- [Get the information for a specific platform account](#get-the-information-for-a-specific-platform-account)
 	- [Fund Resources](#fund-resources)
+		- [Register a credit card to an account](#register-a-credit-card-to-an-account)
 		- [Fund a platform's account](#fund-a-platforms-account)
+		- [Delete a credit card from an account](#delete-a-credit-card-from-an-account)
 	- [Reward Resources](#reward-resources)
 		- [Get the catalog of available items](#get-the-catalog-of-available-items)
 	- [Order Resources](#order-resources)
@@ -69,13 +71,15 @@ You can't mix the credentials for TangoCard.com site with the credentials for th
 	- [Resource Successes](#resource-successes)
 		- [Account Created](#account-created)
 		- [Account](#account)
+		- [Credit card registered](#credit-card-registered)
 		- [Fund Created](#fund-created)
+		- [Credit card deleted](#credit-card-deleted)
 		- [Order Created](#order-created)
 		- [Order List](#order-list)
 		- [Order](#order)
 		- [Rewards List](#rewards-list)
 - [Troubleshooting](#troubleshooting)
-	- [Communication Problems](#communicatin-problems)
+	- [Communication Problems](#communication-problems)
 		- [SSL/TLS](#ssltls)
 
 ## What is RaaS
@@ -185,62 +189,126 @@ Example request/response:
 
 
 
-## Fund Resources 
+## Fund Resources
 
 
+
+### Register a credit card to an account.
+
+POST /raas/v1/cc_register
+
+The input object is defined by [the cc_register JSON-Schema](cc_register.schema.json).
+
+Example request/response:
+
+	> POST /raas/v1/cc_register HTTP/1.1
+	> Authorization: Basic ...
+	> Host: integration-api.tangocard.com
+	> Accept: */*
+	> Content-Length: ...
+	> Content-Type: application/json
+	> 
+	{
+	  "customer": "CompanyA",
+	  "account_identifier": "123456",
+	  "client_ip": "55.44.33.22",
+	  "credit_card": {
+	    "number": "4111111111111111",
+	    "security_code": "123",
+	    "expiration": "2016-11",
+	    "billing_address": {
+	      "f_name": "John",
+	      "l_name": "Doe",
+	      "address": "1234 Fake St",
+	      "city": "Springfield",
+	      "state": "WA",
+	      "zip": "99196",
+	      "country": "USA",
+	      "email": "test@example.com"
+	    }
+	  }
+	}
+	
+	< HTTP/1.1 200 OK
+	< Content-Type: application/json; charset=utf-8
+	< Content-Length: ...
+	<
+	{
+      "success": true,
+      "cc_token": "152686945",
+      "active_date": 1405444573
+	}
+	
+- cc_token represents your payment method and cannot be retrieved later, do not lose it. 
+- active_date is a unix timestamp (UTC) representing when this card completes the approval stage. It is not usable until this time.
 
 
 
 ### Fund a platform's account.
 
-POST /raas/v1/funds
+POST /raas/v1/cc_fund
 
-The input object is defined by [this JSON-Schema](fund_create.schema.json).
+The input object is defined by [the cc_fund JSON-Schema](cc_fund.schema.json).
 
 Example request/response:
 
-	> POST /raas/v1/funds HTTP/1.1
-	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
+	> POST /raas/v1/cc_fund HTTP/1.1
+	> Authorization: Basic ...
 	> Host: integration-api.tangocard.com
 	> Accept: */*
-	> Content-Length: 323
+	> Content-Length: ...
 	> Content-Type: application/json
 	> 
 	{
-		"customer"          : "CompanyA",
-		"account_identifier": "123456",
-		"amount"            : 100000,
-		"client_ip"         : "127.0.0.1",
-		"credit_card"       : {
-			"number"         : "4111111111111111",
-			"expiration"     : "02/20",
-			"security_code"  : "123",
-			"billing_address": {
-				"f_name" : "John",
-				"l_name" : "Doe",
-				"address": "123 Sesame St, Apt 1",
-				"city"   : "Smallville",
-				"state"  : "WA",
-				"country": "USA",
-				"zip"    : "11111",
-				"email"  : "test@example.com"
-			}
-		}
+	  "customer": "CompanyA",
+	  "account_identifier": "123456",
+	  "amount": 100000,
+	  "client_ip": "55.44.33.22",
+	  "security_code": "123",
+	  "cc_token": "152686945"
 	}
-
 
 	< HTTP/1.1 200 OK
 	< Content-Type: application/json; charset=utf-8
-	< Content-Length: 71
+	< Content-Length: ...
 	<
 	{
-		"success": true,
-		"fund_id": "RF11-22222222-33",
-		"amount" : 100000
+	  "success": true,
+	  "fund_id": "RF11-22222222-33",
+	  "amount" : 100000
 	}
 
 
+	
+### Delete a credit card card from an account.
 
+POST /raas/v1/cc_unregister
+
+The input object is defined by [the cc_unregister JSON-Schema](cc_unregister.schema.json).
+
+Example request/response:
+
+	> POST /raas/v1/cc_unregister HTTP/1.1
+	> Authorization: Basic ...
+	> Host: integration-api.tangocard.com
+	> Accept: */*
+	> Content-Length: ...
+	> Content-Type: application/json
+	> 
+	{
+	  "customer": "CompanyA",
+	  "account_identifier": "123456",
+	  "cc_token": "152686945"
+	}
+
+	< HTTP/1.1 200 OK
+	< Content-Type: application/json; charset=utf-8
+	< Content-Length: ...
+	<
+	{
+      "success": true,
+      "message": "This card is no longer present in the system."
+	}
 
 
 
@@ -680,6 +748,19 @@ The result of looking up an account.
 	
 
 
+### Credit card registered
+
+A credit card was registered.
+
+* **HTTP Status Code:** 200 OK
+* **Response Object:** 
+	* success : (boolean)
+	* cc_token : (string) A token needed to recall this card to fund an account.
+	* active_date : (string) unix timestamp (UTC). When the card will be available for funding.
+
+	
+	
+	
 ### Fund Created
 
 An account was funded.
@@ -692,6 +773,18 @@ An account was funded.
 	
 
 
+### Credit card deleted
+
+A credit card was un-registered from an account.
+
+* **HTTP Status Code:** 200 OK
+* **Response Object:** 
+	* success : (boolean)
+	* message: (string) "This card is no longer present in the system."
+
+	
+	
+	
 ### Order Created
 
 An order was created.
@@ -796,7 +889,7 @@ A list of rewards.
 		
 # Troubleshooting
 
-## Communicatin Problems
+## Communication Problems
 
 ### SSL/TLS
 Server environments are often set up to only trust the absolute minimum number of Certificate Authorities they can get away with. As such, many environments may not have the certificates available to allow your application to validate our certificates. As all communication with Tango Card's RaaS API is handled over SSL, not having the certificate chain in place to allow you to validate our cert will (at best) disallow communication or (at worst) expose you to the potential for [main-in-the-middle attacks](http://en.wikipedia.org/wiki/Man-in-the-middle_attack). Thus, it is essential that the environment be set up to allow for safe SSL communication.
