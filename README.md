@@ -241,6 +241,7 @@ Example request/response:
 	
 - cc_token represents your payment method and cannot be retrieved later, do not lose it. 
 - active_date is a unix timestamp (UTC) representing when this card completes the approval stage. It is not usable until this time.
+- In the sandbox environment the credit card registration delay is set to 5 minutes. The registration delay will remain longer in the production environment. In both cases, the duration of the delay will be reflected in active_date. 
 
 
 
