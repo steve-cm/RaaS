@@ -65,6 +65,7 @@ You can't mix the credentials for TangoCard.com site with the credentials for th
 		- [Resource Exists](#resource-exists)
 		- [Invalid Resource Entity](#invalid-resource-entity)
 		- [Invalid Accept Content-type](#invalid-accept-content-type)
+		- [Error RAAS-OC-1003](#RAAS-OC-1003)
 	- [Resource Errors](#resource-errors)
 		- [Fund Create - Payment Error (Credit Card)](#fund-create---payment-error-credit-card)
 		- [Order create - Insufficient Funds](#order-create---insufficient-funds)
@@ -96,7 +97,8 @@ With our RaaS&reg; API you can elegantly knit a sophisticated rewards program in
 * Whenever money is concerned, it is in cents (e.g. $4 = 400).
 * Fields in the RaaS API response objects may be added at any time. This means that whatever is used to demarshall the JSON responses into native data types needs to be able to handle unknown fields without failing.
 * All responses may include a `system_message` field. This is a note from TangoCard to the platforms and not intended for end users. This will notify of things like planned outages and should be monitored.
-
+* Retries - Network vagaries, infrastructure and supplier factors mean occasional network errors are inevitable and must be planned for. For this reason we recommend that you build an "exponential back off" retry algorithm in which the timeout value for retry doubles after each unsuccessful attempt. Exponential retries are well-documented elsewhere on the internet and beyond the scope of this document.
+* Test Reward Codes in Sandbox - Rewards delivered from the Sandbox environment contain sample codes and have no value. Some Amazon.com denominations, especially around $20, may fail in the Sandbox environment. This is intentional behavior for the purpose of simulating an API error. If you encounter an error when testing an Amazon.com code, please try another denomination. Be assured that Amazon.com orders work consistently in the production environment.
 
 
 
@@ -678,6 +680,13 @@ The Accept header did not contain content-types that we could fulfill.
 	* error_message : (string) A debug message.
 	* content_types : (array) An array of content types we support.
 
+
+
+### RAAS OC 1003
+
+Error RAAS:OC:1003
+
+This is a system error sometimes seen when there is a problem with the supplier API or item status. If you see this error please contact sdk@tangocard.com and include your request and response JSON if possible.
 
 
 ## Resource Errors
