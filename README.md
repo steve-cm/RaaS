@@ -6,8 +6,6 @@
 Please email sdk@tangocard.com to receive credentials for the RaaS API Sandbox environment. 
 The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1/
 
-To review the end-to-end user experience, any Tango Cards purchased on the Sandbox environment can be redeemed on the [Tango Card Sandbox website](https://integration-www.tangocard.com/)
-
 ## Test drive the RaaS API
 
 You have couple of options to test drive the RaaS API without writing a single line of code.
@@ -18,10 +16,6 @@ One way to test drive the RaaS API, you can visit the
 
 Using the Test Console you can go through each resource supported by the RaaS API, 
 the requests and the responses for each of these resources.
-
-### Mashape
-Another way to test drive the RaaS API (albeit only against our Production environment) is 
-[Rewards as a Service](https://www.mashape.com/tangocard/rewards-as-a-service/) page on Mashape.
 
 ## Production credentials
 Once you are ready to move to production, you need to agree to the [RaaS API Terms & Conditions](https://creator.zoho.com/shighet/raas-api-agreement/form-perma/RaaS_API_Agreement/U12njtAWxArN6VnavC92RTZkw2kUOQhbkZxKsKD0jHAOqFwxvQRSQKfU2xW8xytQuMPHUafDD3P0vnsXVKDYAjOOR3qHOdq7kQHr/). 
@@ -97,8 +91,8 @@ With our RaaS&reg; API you can elegantly knit a sophisticated rewards program in
 * Whenever money is concerned, it is in cents (e.g. $4 = 400).
 * Fields in the RaaS API response objects may be added at any time. This means that whatever is used to demarshall the JSON responses into native data types needs to be able to handle unknown fields without failing.
 * All responses may include a `system_message` field. This is a note from TangoCard to the platforms and not intended for end users. This will notify of things like planned outages and should be monitored.
-* Retries - Network vagaries, infrastructure and supplier factors mean occasional network errors are inevitable and must be planned for. For this reason we recommend that you build an "exponential back off" retry algorithm in which the timeout value for retry doubles after each unsuccessful attempt. Exponential retries are well-documented elsewhere on the internet and beyond the scope of this document.
-* Test Reward Codes in Sandbox - Rewards delivered from the Sandbox environment contain sample codes and have no value. Some Amazon.com denominations, especially around $20, may fail in the Sandbox environment. This is intentional behavior for the purpose of simulating an API error. If you encounter an error when testing an Amazon.com code, please try another denomination. Be assured that Amazon.com orders work consistently in the production environment.
+* Retries - Network vagaries, infrastructure and supplier factors mean occasional network errors are inevitable and must be planned for. For this reason we recommend that you build an "exponential back off" retry algorithm in which the timeout value for retry doubles after each unsuccessful attempt. [More Information](http://en.wikipedia.org/wiki/Exponential_backoff)
+* Test Reward Codes in Sandbox - Rewards delivered from the Sandbox environment contain sample codes and have no value. Some Amazon.com denominations may fail in the Sandbox environment. This is intentional behavior for the purpose of simulating an API error. If you encounter an error when testing an Amazon.com code, please try another denomination. Be assured that Amazon.com orders work consistently in the production environment.
 
 
 
@@ -686,7 +680,7 @@ The Accept header did not contain content-types that we could fulfill.
 
 Error RAAS:OC:1003
 
-This is a system error sometimes seen when there is a problem with the supplier API or item status. If you see this error please contact sdk@tangocard.com and include your request and response JSON if possible.
+This a catch-all system error for which more specific messaging has not yet been created.  If you encounter this error please contact sdk@tangocard.com and include your request and response JSON.
 
 
 ## Resource Errors
