@@ -12,7 +12,7 @@ You have couple of options to test drive the RaaS API without writing a single l
 
 ### RaaS API Test Console
 One way to test drive the RaaS API, you can visit the 
-[RaaS API Test Console](https://integration-www.tangocard.com/test_raas_api). 
+[RaaS API Test Console](https://www.tangocard.com/raas_api_console/). 
 
 Using the Test Console you can go through each resource supported by the RaaS API, 
 the requests and the responses for each of these resources.
