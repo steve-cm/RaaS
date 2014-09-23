@@ -433,7 +433,8 @@ Example request/response:
 		"amount"            : 1000,
 		"reward_message"    : "Thank you for participating in the XYZ survey.",
 		"reward_subject"    : "XYZ Survey, thank you...",
-		"reward_from"       : "Jon Survey Doe"
+		"reward_from"       : "Jon Survey Doe",
+		"send_reward"       : true
 	}
 	
 	
