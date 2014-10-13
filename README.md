@@ -2,39 +2,13 @@
 
 # RaaS&reg; API - Version 1 
 
-## Sandbox credentials
-Please email sdk@tangocard.com to receive credentials for the RaaS API Sandbox environment. 
-The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1/
-
-## Test drive the RaaS API
-
-You have couple of options to test drive the RaaS API without writing a single line of code.
-
-### RaaS API Test Console
-One way to test drive the RaaS API, you can visit the 
-[RaaS API Test Console](https://www.tangocard.com/raas_api_console/). 
-
-Using the Test Console you can go through each resource supported by the RaaS API, 
-the requests and the responses for each of these resources.
-
-## Production credentials
-Once you are ready to move to production, you need to agree to the [RaaS API Terms & Conditions](https://creator.zoho.com/shighet/raas-api-agreement/form-perma/RaaS_API_Agreement/U12njtAWxArN6VnavC92RTZkw2kUOQhbkZxKsKD0jHAOqFwxvQRSQKfU2xW8xytQuMPHUafDD3P0vnsXVKDYAjOOR3qHOdq7kQHr/). 
-Once you agree to the Terms & Conditions, we will create credentials on the Production environment and follow up with you. 
-The endpoint for the RESTful interface on the Production environment is https://api.tangocard.com/raas/v1/
-
-## TangoCard.com credentials and RaaS credentials
-Our previous version of the API uses credentials (username and password) created on TangoCard.com
-
-However, the RaaS API uses a Platform name and a Platform key that need to be created for you. 
-
-You can't mix the credentials for TangoCard.com site with the credentials for the RaaS API.
-
 ## Table of Contents
 
 - [RaaS API - Version 1](#raas-api---version-1)
 	- [Table of Contents](#table-of-contents)
 	- [What is RaaS](#what-is-raas)
 	- [System-wide Notes](#system-wide-notes)
+	- [SSL/TLS](#ssltls)
 - [Resources](#resources)
 	- [Account Resources](#account-resources)
 		- [Create a new platform account](#create-a-new-platform-account)
@@ -59,7 +33,6 @@ You can't mix the credentials for TangoCard.com site with the credentials for th
 		- [Resource Exists](#resource-exists)
 		- [Invalid Resource Entity](#invalid-resource-entity)
 		- [Invalid Accept Content-type](#invalid-accept-content-type)
-		- [Error RAAS-OC-1003](#RAAS-OC-1003)
 	- [Resource Errors](#resource-errors)
 		- [Fund Create - Payment Error (Credit Card)](#fund-create---payment-error-credit-card)
 		- [Order create - Insufficient Funds](#order-create---insufficient-funds)
@@ -73,13 +46,39 @@ You can't mix the credentials for TangoCard.com site with the credentials for th
 		- [Order List](#order-list)
 		- [Order](#order)
 		- [Rewards List](#rewards-list)
-- [Troubleshooting](#troubleshooting)
-	- [Communication Problems](#communication-problems)
-		- [SSL/TLS](#ssltls)
 
-## What is RaaS
+		
+## What is the RaaS&reg; API?
 
-With our RaaS&reg; API you can elegantly knit a sophisticated rewards program into your platform. Create an account, fund an account, manage catalog, send rewards, and get order history - all available on demand, real time, and as a service.
+With our RaaS API you can elegantly knit a sophisticated rewards program into your platform. Create an account, fund an account, manage catalog, send rewards, and get order history - all available on demand, real time, and as a service.
+
+## Test drive the RaaS API
+
+You can test drive the RaaS API without writing a single line of code!  
+
+Using the [RaaS API Test Console](https://integration-www.tangocard.com/raas_api_console/), you can easily go through each resource supported our API and see the requests and the responses for each of these resources. When you are comfortable with the concepts you can begin coding by requesting Sandbox credentials for our test site. Then, if you run into problems during the coding phase you can come back to our console and compare your JSON to our requests and responses to see what is different.
+
+
+## Sandbox credentials
+
+Please email sdk@tangocard.com to receive credentials for the RaaS API Sandbox environment. 
+The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1/
+
+An important note about *Test Codes*: Rewards delivered from Tango Card's Sandbox environment contain sample codes and have no monetary or reemable value. Additionally, please note that some Amazon.com denominations, like $20, may fail in the Sandbox environment. This is intentional behavior for the purpose of simulating an API error. If you encounter an error when testing an Amazon.com code, please try another denomination. Be assured that Amazon.com orders work consistently in the production environment. 
+
+When you have completed your developmenta and are ready for production testing / launch you can request production credentials.
+
+
+## Production credentials
+
+Once you are ready to move to production, you need to agree to the [RaaS API Terms & Conditions](https://creator.zoho.com/shighet/raas-api-agreement/form-perma/RaaS_API_Agreement/U12njtAWxArN6VnavC92RTZkw2kUOQhbkZxKsKD0jHAOqFwxvQRSQKfU2xW8xytQuMPHUafDD3P0vnsXVKDYAjOOR3qHOdq7kQHr/). 
+Once you agree to the Terms & Conditions, we will create credentials on the Production environment and follow up with you. 
+The endpoint for the RESTful interface on the Production environment is https://api.tangocard.com/raas/v1/
+
+
+## RaaS API credentials versus TangoCard.com user credentials
+
+Our now-depricated legacy SDKs used username and password credentials (like those used for user accounts on our website). If you are upgrading to the RaaS API from one of our legacy SDKs, please note that our RaaS API uses a Platform Name and Platform Key that need to be created for your RaaS API account and you can not mix the credentials for TangoCard.com site with the credentials for the RaaS API.
 
 
 ## System-wide Notes
@@ -91,13 +90,38 @@ With our RaaS&reg; API you can elegantly knit a sophisticated rewards program in
 * Whenever money is concerned, it is in cents (e.g. $4 = 400).
 * Fields in the RaaS API response objects may be added at any time. This means that whatever is used to demarshall the JSON responses into native data types needs to be able to handle unknown fields without failing.
 * All responses may include a `system_message` field. This is a note from TangoCard to the platforms and not intended for end users. This will notify of things like planned outages and should be monitored.
-* Retries - Network vagaries, infrastructure and supplier factors mean occasional network errors are inevitable and must be planned for. For this reason we recommend that you build an "exponential back off" retry algorithm in which the timeout value for retry doubles after each unsuccessful attempt. [More Information](http://en.wikipedia.org/wiki/Exponential_backoff)
-* Test Reward Codes in Sandbox - Rewards delivered from the Sandbox environment contain sample codes and have no value. Some Amazon.com denominations may fail in the Sandbox environment. This is intentional behavior for the purpose of simulating an API error. If you encounter an error when testing an Amazon.com code, please try another denomination. Be assured that Amazon.com orders work consistently in the production environment.
 
+
+## SSL/TLS
+
+All communication with Tango Card's RaaS API is handled over SSL, a commonly-used protocol for managing secured message transmissions on the Internet. As a result, clients of the RaaS API need to ensure that you have the [chain (intermediate) certificate](http://en.wikipedia.org/wiki/Intermediate_certificate_authorities) in place on your server. This is important as not having the chain certificate in place will (at best) disallow communication or (at worst) expose you to the potential for [man-in-the-middle attacks](http://en.wikipedia.org/wiki/Man-in-the-middle_attack). To accomplish this, we recommend you add the CA's cert to your system's trusted list. If that's not possible, an alternative is to include the certificate in your application. Major CAs deliver a ‘bundled’ file containing the complete certificate chain providing a single installation method for the certificate.
+ 
+The Certificate Authority that issued our server certificates is [DigiCert](https://www.digicert.com/), and we have one of their *DigiCert SHA2 Secure Server CA* certs. You can get DigiCert's root and intermediate certificates from [https://www.digicert.com/digicert-root-certificates.htm](https://www.digicert.com/digicert-root-certificates.htm).  If you choose to reference the certificate chain from your application's code, the details on how to do this are highly specific to the library being used to make the connection, but here are a few examples to demonstrate the idea:
+ 
+ ```ruby
+ # Ruby (using net/https)
+ https = Net::HTTP.new('integration-api.tangocard.com', 443) 
+ https.use_ssl = true 
+ https.verify_mode = OpenSSL::SSL::VERIFY_PEER 
+ https.ca_file = File.join(File.dirname(__FILE__), "../ca_certs/digicert_chain.pem") 
+ https.request_get('/fake/example')
+ ```
+ 
+ ```PHP
+ # PHP (using curl)
+ $curl = curl_init('https://integration-api.tangocard.com/fake/example');
+ curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+ curl_setopt($curl, CURLOPT_CAINFO, __DIR__ . "../ca_certs/digicert_chain.pem");
+ curl_exec($curl);
+ ```
+ 
+One thing to take note of in both examples is that OpenSSL is being instructed to **VERIFY PEER**. This setting is essential as without it you will know that your communication is encrypted, but you won't know who it is you're talking to.
+ 
+Note: We use a wild-card certificate from DigiCert and hence the certificate chain is the same for both Sandbox and Production environments.
+ 
 
 
 # Resources
-
 
 
 ## Account Resources
@@ -182,11 +206,7 @@ Example request/response:
 
 
 
-
-
-
 ## Fund Resources
-
 
 
 ### Register a credit card to an account.
@@ -235,10 +255,10 @@ Example request/response:
       "active_date": 1405444573
 	}
 	
-- cc_token represents your payment method and cannot be retrieved later, do not lose it. 
-- active_date is a unix timestamp (UTC) representing when this card completes the approval stage. It is not usable until this time.
-- In the sandbox environment the credit card registration delay is set to 5 minutes. The registration delay will remain longer in the production environment. In both cases, the duration of the delay will be reflected in active_date. 
-
+- cc_token represents your payment method and cannot be retrieved later, *DO NOT LOSE IT*. 
+- active_date is a unix timestamp (UTC) representing when this card completes the approval stage. It is not usable until this time. You can use [EpochConverter](http://www.epochconverter.com/) to decode the timestamp.
+- In the sandbox environment the credit card registration delay is set to 5 minutes. The registration delay will be longer in the production environment. In both cases, the duration of the delay will be reflected in active_date. 
+- For Sandbox testing you *MUST* use the test credit card number "4111111111111111", as reflected in the above example. Other fake credit card numbers and valid credit card numbers are not supported in the Sandbox environment.
 
 
 ### Fund a platform's account.
@@ -310,9 +330,6 @@ Example request/response:
 
 
 ## Reward Resources
-
-
-
 
 
 ### Get the catalog of available items.
@@ -398,12 +415,7 @@ Example request/response:
 
 
 
-
-
-
 ## Order Resources
-
-
 
 
 
@@ -433,8 +445,7 @@ Example request/response:
 		"amount"            : 1000,
 		"reward_message"    : "Thank you for participating in the XYZ survey.",
 		"reward_subject"    : "XYZ Survey, thank you...",
-		"reward_from"       : "Jon Survey Doe",
-		"send_reward"       : true
+		"reward_from"       : "Jon Survey Doe"
 	}
 	
 	
@@ -561,13 +572,9 @@ Example request/response:
 
 
 
-
-
-
 # Responses
 
 * All responses will have a field called "success" which is a Boolean to denote high-level success/failure.
-
 
 
 
@@ -716,7 +723,6 @@ There were not enough funds available in the account to cover the cost of the or
 
 
 
-
 ## Resource Successes
 
 
@@ -765,7 +771,6 @@ A credit card was registered.
 
 	
 	
-	
 ### Fund Created
 
 An account was funded.
@@ -787,7 +792,6 @@ A credit card was un-registered from an account.
 	* success : (boolean)
 	* message: (string) "This card is no longer present in the system."
 
-	
 	
 	
 ### Order Created
@@ -888,42 +892,7 @@ A list of rewards.
 			* min_price : (integer) For variable price rewards this denoted the minimum price available. Field may not be present for non-variable.
 			* max_price : (integer) For variable price rewards this denoted the maximum price available. Field may not be present for non-variable.
 		
-		
-		
-		
-		
-# Troubleshooting
 
-## Communication Problems
-
-### SSL/TLS
-Server environments are often set up to only trust the absolute minimum number of Certificate Authorities they can get away with. As such, many environments may not have the certificates available to allow your application to validate our certificates. As all communication with Tango Card's RaaS API is handled over SSL, not having the certificate chain in place to allow you to validate our cert will (at best) disallow communication or (at worst) expose you to the potential for [main-in-the-middle attacks](http://en.wikipedia.org/wiki/Man-in-the-middle_attack). Thus, it is essential that the environment be set up to allow for safe SSL communication.
-
-There are a few ways to acheive this (like adding the CA's cert to the system's trusted list), but probably the easiest (and most portable) would be to include the certificate in your application. The Certificate Authority that issued our server certificates is [DigiCert](https://www.digicert.com/), and we have one of their *DigiCert High Assurance CA-3* certs. You can get DigiCert's root and intermediate certificates from [https://www.digicert.com/digicert-root-certificates.htm](their site). Alternatively, you can download the entire chain needed [here](ssl/tangocard_digicert_chain.pem) in PEM format.
-
-Once you have the certificate in hand it will need to be referenced from your application's code. The details on how to do this are highly specific to the library being used to make the connection, but here are a few examples to demonstrate the idea:
-
-```ruby
-# Ruby (using net/https)
-https = Net::HTTP.new('integration-api.tangocard.com', 443) 
-https.use_ssl = true 
-https.verify_mode = OpenSSL::SSL::VERIFY_PEER 
-https.ca_file = File.join(File.dirname(__FILE__), "../ca_certs/tangocard_digicert_chain.pem") 
-https.request_get('/fake/example')
-```
-
-```php
-// PHP (using curl)
-$curl = curl_init('https://integration-api.tangocard.com/fake/example');
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
-curl_setopt($curl, CURLOPT_CAINFO, __DIR__ . "../ca_certs/tangocard_digicert_chain.pem");
-curl_exec($curl);
-```
-
-
-One thing to take note of in both examples is that OpenSSL is being instructed to **VERIFY PEER**. This setting is essential as without it you will know that your communication is encrypted, but you won't know who it is you're talking to.
-
-Note: We use a wild-card certificate from DigiCert and hence the certificate chain is the same for both Sandbox (https://sandbox.tangocard.com) and Production (https://api.tangocard.com) environments.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0d99126c1cf8686391099d328e3c2363 "githalytics.com")](http://githalytics.com/github.com/tangocarddev)
 
