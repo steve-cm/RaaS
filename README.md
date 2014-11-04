@@ -337,6 +337,7 @@ Example request/response:
 GET /raas/v1/rewards
 
 * A negative-value "unit price" indicates that the item has a variable price. In this case the minimum and maximum fields should be consulted.
+* Fixed value items also include "denomination", "currency_code", and "locale".  These values represent the face value currency, while "currency_type" relates to "unit_price"
 
 Example request/response:
 
@@ -399,14 +400,20 @@ Example request/response:
 						"sku"          : "APPL-E-2500-STD",
 						"currency_type": "USD",
 						"unit_price"   : 2500,
-						"available"    : true
+						"available"    : true,
+						"denomination" : 2500,
+						"currency_code": "USD",
+						"locale"       : "en_US"
 					},
 					{
 						"description"  : "iTunes E-Gift Card $50",
 						"sku"          : "APPL-E-5000-STD",
 						"currency_type": "USD",
 						"unit_price"   : 5000,
-						"available"    : true
+						"available"    : true,
+						"denomination" : 5000,
+						"currency_code": "USD",
+						"locale"       : "en_US"
 					}
 				]
 			}
