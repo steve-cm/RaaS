@@ -338,6 +338,7 @@ GET /raas/v1/rewards
 
 * A negative-value "unit price" indicates that the item has a variable price. In this case the minimum and maximum fields should be consulted.
 * Fixed value items also include "denomination", "currency_code", and "locale".  These values represent the face value currency, while "currency_type" relates to "unit_price"
+* The "denomination" is the face value of the gift card and the "unit_price" is the cost of the gift card in USD.
 
 Example request/response:
 
