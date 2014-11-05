@@ -337,6 +337,8 @@ Example request/response:
 GET /raas/v1/rewards
 
 * A negative-value "unit price" indicates that the item has a variable price. In this case the minimum and maximum fields should be consulted.
+* Fixed value items also include "denomination", "currency_code", and "locale".  These values represent the face value currency, while "currency_type" relates to "unit_price"
+* The "denomination" is the face value of the gift card and the "unit_price" is the cost of the gift card in USD.
 
 Example request/response:
 
@@ -399,14 +401,20 @@ Example request/response:
 						"sku"          : "APPL-E-2500-STD",
 						"currency_type": "USD",
 						"unit_price"   : 2500,
-						"available"    : true
+						"available"    : true,
+						"denomination" : 2500,
+						"currency_code": "USD",
+						"locale"       : "en_US"
 					},
 					{
 						"description"  : "iTunes E-Gift Card $50",
 						"sku"          : "APPL-E-5000-STD",
 						"currency_type": "USD",
 						"unit_price"   : 5000,
-						"available"    : true
+						"available"    : true,
+						"denomination" : 5000,
+						"currency_code": "USD",
+						"locale"       : "en_US"
 					}
 				]
 			}
@@ -889,8 +897,11 @@ A list of rewards.
 			* currency_type : (string) The currency of the reward (e.g. USD).
 			* unit_price : (integer) The price of the reward (negative values denote variable prices).
 			* available : (boolean) Whether the reward is currently available.
-			* min_price : (integer) For variable price rewards this denoted the minimum price available. Field may not be present for non-variable.
-			* max_price : (integer) For variable price rewards this denoted the maximum price available. Field may not be present for non-variable.
+			* min_price : (integer) For variable price rewards this denotes the minimum price available. Field may not be present for non-variable.
+			* max_price : (integer) For variable price rewards this denotes the maximum price available. Field may not be present for non-variable.
+			* denomination : (integer) For fixed price rewards, representing the face value. Field will not be present for variable.
+			* currency_code : (string) For fixed price rewards, this is the 3-letter currency code of the denomination.  Field will not be present for variable.
+			* locale : (string) For fixed price rewards, this denotes the main region/culture of the denomination. (e.g., "en_US") This is provided for ease of regional formatting.  Field will not be present for variable.
 		
 
 
