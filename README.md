@@ -66,7 +66,7 @@ The endpoint for the RESTful interface on the Sandbox environment is https://san
 
 An important note about *Test Codes*: Rewards delivered from Tango Card's Sandbox environment contain sample codes and have no monetary or reemable value. Additionally, please note that some Amazon.com denominations, like $20, may fail in the Sandbox environment. This is intentional behavior for the purpose of simulating an API error. If you encounter an error when testing an Amazon.com code, please try another denomination. Be assured that Amazon.com orders work consistently in the production environment. 
 
-When you have completed your developmenta and are ready for production testing / launch you can request production credentials.
+When you have completed your development and are ready for production testing / launch you can request production credentials.
 
 
 ## Production credentials
