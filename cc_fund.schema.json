@@ -1,10 +1,10 @@
 {
     "$schema":"http://json-schema.org/draft-04/schema#",
-    "title":"Fund a platform user\'s account.",
+    "title":"Fund a platform user's account.",
     "type":"object",
     "properties":{
         "customer":{
-            "description":"The platform\'s customer.",
+            "description":"The platform's customer.",
             "type":"string",
             "minLength":1,
             "maxLength":96
