@@ -5,8 +5,7 @@
 ## Table of Contents
 
 - [RaaS API - Version 1](#raas-api---version-1)
-	- [Table of Contents](#table-of-contents)
-	- [What is RaaS](#what-is-raas)
+	- [What is RaaS](#what-is-the-raas-api)
 	- [System-wide Notes](#system-wide-notes)
 	- [SSL/TLS](#ssltls)
 - [Resources](#resources)
