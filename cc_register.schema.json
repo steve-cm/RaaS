@@ -14,7 +14,7 @@
             "type":"string",
             "minLength":5,
             "maxLength":96,
-            "pattern":"^[\\\\+\\\\w-]{5,96}$"
+            "pattern":"^[\\+\\w-]{5,96}$"
         },
         "client_ip":{
             "description":"The IP address of the person making the purchase.",
@@ -38,7 +38,7 @@
                 "security_code":{
                     "description":"The 3 or 4-digit card security code (CVV2, CVC2, or CID).",
                     "type":"string",
-                    "pattern":"^\\\\d{3,4}$"
+                    "pattern":"^\\d{3,4}$"
                 },
                 "billing_address":{	
                     "description":"The billing address associated with the credit card.",
@@ -92,7 +92,7 @@
                             "type":"string",
                             "minLength":5,
                             "maxLength":255,
-                            "pattern":"^\\\\S+@\\\\S+$"
+                            "pattern":"^\\S+@\\S+$"
                         }
                     },
                     "required":["f_name","l_name","address","city","state","zip","email"]
