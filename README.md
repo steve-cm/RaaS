@@ -5,8 +5,7 @@
 ## Table of Contents
 
 - [RaaS API - Version 1](#raas-api---version-1)
-	- [Table of Contents](#table-of-contents)
-	- [What is RaaS](#what-is-raas)
+	- [What is RaaS](#what-is-the-raas-api)
 	- [System-wide Notes](#system-wide-notes)
 	- [SSL/TLS](#ssltls)
 - [Resources](#resources)
@@ -115,6 +114,15 @@ The Certificate Authority that issued our server certificates is [DigiCert](http
  curl_exec($curl);
  ```
  
+ ```python
+ # python (using requests)
+import requests
+from requests.auth import HTTPBasicAuth
+# SSL is used by default.
+requests.get('https://integration-api.tangocard.com/fake/example',
+             auth=HTTPBasicAuth(username, password))
+```
+
 One thing to take note of in both examples is that OpenSSL is being instructed to **VERIFY PEER**. This setting is essential as without it you will know that your communication is encrypted, but you won't know who it is you're talking to.
  
 Note: We use a wild-card certificate from DigiCert and hence the certificate chain is the same for both Sandbox and Production environments.

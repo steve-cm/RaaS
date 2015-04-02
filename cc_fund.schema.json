@@ -1,10 +1,10 @@
 {
     "$schema":"http://json-schema.org/draft-04/schema#",
-    "title":"Fund a platform user\'s account.",
+    "title":"Fund a platform user's account.",
     "type":"object",
     "properties":{
         "customer":{
-            "description":"The platform\'s customer.",
+            "description":"The platform's customer.",
             "type":"string",
             "minLength":1,
             "maxLength":96
@@ -14,7 +14,7 @@
             "type":"string",
             "minLength":5,
             "maxLength":96,
-            "pattern":"^[\\\\+\\\\w-]{5,96}$"
+            "pattern":"^[\\+\\w-]{5,96}$"
         },
         "amount":{
             "description":"The amount to add to the account (and thus, charge the credit card), in cents.",
@@ -32,7 +32,7 @@
         "security_code":{
             "description":"The 3 or 4-digit card security code (CVV2, CVC2, or CID).",
             "type":"string",
-            "pattern":"^\\\\d{3,4}$"
+            "pattern":"^\\d{3,4}$"
         }
     },
     "required":["customer","account_identifier","amount","client_ip","cc_token","security_code"]

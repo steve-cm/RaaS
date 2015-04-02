@@ -1,10 +1,10 @@
 {
     "$schema":"http://json-schema.org/draft-04/schema#",
-    "title":"Register a card to a platform user\'s account.",
+    "title":"Register a card to a platform user's account.",
     "type":"object",
     "properties":{
         "customer":{
-            "description":"The platform\'s customer.",
+            "description":"The platform's customer.",
             "type":"string",
             "minLength":1,
             "maxLength":96
@@ -14,7 +14,7 @@
             "type":"string",
             "minLength":5,
             "maxLength":96,
-            "pattern":"^[\\\\+\\\\w-]{5,96}$"
+            "pattern":"^[\\+\\w-]{5,96}$"
         },
         "client_ip":{
             "description":"The IP address of the person making the purchase.",
@@ -38,20 +38,20 @@
                 "security_code":{
                     "description":"The 3 or 4-digit card security code (CVV2, CVC2, or CID).",
                     "type":"string",
-                    "pattern":"^\\\\d{3,4}$"
+                    "pattern":"^\\d{3,4}$"
                 },
                 "billing_address":{	
                     "description":"The billing address associated with the credit card.",
                     "type":"object",
                     "properties":{
                         "f_name":{
-                            "description":"The first name associated with the customer\'s billing address.",
+                            "description":"The first name associated with the customer's billing address.",
                             "type":"string",
                             "minLength":1,
                             "maxLength":50
                         },
                         "l_name":{
-                            "description":"The last name associated with the customer\'s billing address.",
+                            "description":"The last name associated with the customer's billing address.",
                             "type":"string",
                             "minLength":1,
                             "maxLength":50
@@ -63,36 +63,36 @@
                             "maxLength":60
                         },
                         "city":{
-                            "description":"The city of the customer\'s billing address.",
+                            "description":"The city of the customer's billing address.",
                             "type":"string",
                             "minLength":1,
                             "maxLength":40
                         },
                         "state":{
-                            "description":"The state of the customer\'s billing address. Up to 40 characters (no symbols) or a FIPS state alpha code (e.g. AL, WA, etc).",
+                            "description":"The state of the customer's billing address. Up to 40 characters (no symbols) or a FIPS state alpha code (e.g. AL, WA, etc).",
                             "type":"string",
                             "minLength":1,
                             "maxLength":40
                         },
                         "zip":{
-                            "description":"The postal code of the customer\'s billing address.",
+                            "description":"The postal code of the customer's billing address.",
                             "type":"string",
                             "minLength":1,
                             "maxLength":20
                         },
                         "country":{
-                            "description":"The country of the customer\'s billing address.",
+                            "description":"The country of the customer's billing address.",
                             "type":"string",
                             "minLength":1,
                             "maxLength":60,
                             "optional":true
                         },
                         "email":{
-                            "description":"The customer\'s email address.",
+                            "description":"The customer's email address.",
                             "type":"string",
                             "minLength":5,
                             "maxLength":255,
-                            "pattern":"^\\\\S+@\\\\S+$"
+                            "pattern":"^\\S+@\\S+$"
                         }
                     },
                     "required":["f_name","l_name","address","city","state","zip","email"]

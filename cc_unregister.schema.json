@@ -4,7 +4,7 @@
     "type":"object",
     "properties":{
         "customer":{
-            "description":"The platform\'s customer.",
+            "description":"The platform's customer.",
             "type":"string",
             "minLength":1,
             "maxLength":96
