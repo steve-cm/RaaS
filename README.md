@@ -70,7 +70,7 @@ When you have completed your development and are ready for production testing / 
 
 ## Production credentials
 
-Once you are ready to move to production, you need to agree to the [RaaS API Terms & Conditions](https://creator.zoho.com/shighet/raas-api-agreement/form-perma/RaaS_API_Agreement/U12njtAWxArN6VnavC92RTZkw2kUOQhbkZxKsKD0jHAOqFwxvQRSQKfU2xW8xytQuMPHUafDD3P0vnsXVKDYAjOOR3qHOdq7kQHr/). 
+Once you are ready to move to production, you need to agree to the [RaaS API Terms & Conditions](https://www.tangocard.com/tango_card_agreements/#ETOS). 
 Once you agree to the Terms & Conditions, we will create credentials on the Production environment and follow up with you. 
 The endpoint for the RESTful interface on the Production environment is https://api.tangocard.com/raas/v1/
 
