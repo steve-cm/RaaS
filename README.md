@@ -305,7 +305,7 @@ Example request/response:
 
 
 	
-### Delete a credit card card from an account.
+### Delete a credit card from an account.
 
 POST /raas/v1/cc_unregister
 
