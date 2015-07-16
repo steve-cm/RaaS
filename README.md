@@ -139,6 +139,7 @@ The following is a section of resources related to the platform's accounts.
 * An "account identifier" in the system can be whatever is convenient for the platform as long as it adheres to the following rules:
  * Between 5 and 96 characters in length (inclusive).
  * Must be made up exclusively of: alphanumeric (A-Z, a-z, 0-9), underscore (_), dash (-), or plus (+).
+ * Must NOT contain characters invalid in a URI. Examples include, but are not limited to: . , ! &. Spaces are not allowed either.
  * Must be unique to the platform.
 * A "customer" is a mechanism for denoting a company, department, etc an account belongs to. 
 
