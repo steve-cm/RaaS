@@ -20,6 +20,7 @@
 		- [Get the catalog of available items](#get-the-catalog-of-available-items)
 	- [Order Resources](#order-resources)
 		- [Place an order](#place-an-order)
+		- [Resend an order](#resend-an-order)
 		- [Retrieve a historical order](#retrieve-a-historical-order)
 		- [Retrieve a list of historical orders](#retrieve-a-list-of-historical-orders)
 - [Responses](#responses)
@@ -483,14 +484,125 @@ Example request/response:
 			"reward_from"       : "Jon Survey Doe",
 			"delivered_at"      : "2013-03-12T15:17:16+00:00",
 			"recipient"         : {
-				"name" : "John Doe",
-				"email": "john.doe@example.com"
-			}
+				"name"      : "John Doe",
+				"email"     : "john.doe@example.com"
+			},
+    			"reward": {
+      				"token"     : "55b95ad97f5b99.96804739",
+      				"number"    : "7001204001834392312",
+      				"pin"       : "861693"
+    			}
 		}
 	}
 
+For international variable skus, there will be an expiration date ("expiration") in the successful response, if applicable. The format for expiration date is ISO6801 standard date format, example: 2016-06-19 (Year-Month-Day).
+
+*Expiration dates in email templates will appear in localized format, for example: 2016-06-19 could be 2016年6月19日. We are using this PHP library to format international dates: http://php.net/manual/en/class.intldateformatter.php
+
+Example success response for international variable sku:
+
+	< HTTP/1.1 201 Created
+	< Content-Type: application/json; charset=utf-8
+	< Location: https://integration-api.tangocard.com/raas/v1/orders/
+	< Content-Length: 297
+	< 
+	{
+		"success": true,
+		"order": {
+			"order_id"          : "115-07734196-29",
+			"account_identifier": "123456",
+			"customer"          : "CompanyA",
+			"sku"               : "AMZUK-E-V-STD",
+			"amount"            : 1550,
+			"reward_message"    : "Test of reward response",
+			"reward_subject"    : {
+				"data"      : ""
+				},
+			"reward_from"       : "Jane Doe",
+			"delivered_at"      : "2015-07-29T22:46:36+00:00",
+			"recipient"         : {
+				"name" : "John Doe",
+				"email": "john.doe@example.com"
+    	},
+		"reward": {
+			"token"        : "55b957d0c54b69.57249418",
+			"number"       : "27VP-CJRLS6-HFV7",
+			"expiration"   : "2025-07-29"
+    			}
+  		}
+	}
 
 
+### Resend an order.
+
+The Resend functionality allows Tango Card RaaS API Platform partners to resend reward emails to the original recipient on demand. This may be useful if a recipient reports that they never received or cannot find a reward email. 
+
+Format:
+
+POST raas/v1/orders/{ORDER_NUMBER}/resend
+
+RULES & IMPORTANT NOTES
+1.	Resend is not supported for emails originally sent prior to February 18, 2015
+2.	The target order (to be resent) must have been sent with the "send_reward" property set to "true" (the default value). This means Tango Card sent the original email. If it was “false” we cannot resend the email because we never sent the original. 
+3.	Orders can be resent once every 24 hours. This is reflected in the error message timestamp if a second attempt is made less than 24 hours after the last send.
+4.	Resend functionality does not have to be specific to a RaaS account. The Resend functionality occurs at the platform level of the RaaS integration. 
+5.	You will need the original order number in order to perform the resend. The Tango Card Order History call allows for a search of past orders and includes the order number for order result. 
+6.	Orders can only be resent to the original recipient. If an administrator needs to verify reward information for a given order, consider using the Get Order Information call instead of the Resend an Order call.
+7.	Resending an email does not guarantee delivery. If the recipient does not receive an email due to spam filter settings, corporate firewalls, etc. resending an email will not get them their reward. The underlying problem will need to be determined and resolved. 
+
+
+Example request/response:
+
+   	> POST /raas/v1/orders/123-12345678-12/resend HTTP/1.1
+    	> Authorization: Basic C0FFEEC0FFEEC0FFXXXXXXXX
+    	> Host: integration-api.tangocard.com
+    	> Accept: */*
+    	> 
+
+    	< HTTP/1.1 200 OK
+    	< Content-Type: application/json; charset=utf-8
+    	<
+    	{
+        	"success": true
+    	}
+
+Error Reponses:
+
+Cannot send more than once every 24 hours
+Resend functionality is limited to once every 24 hours per order. The 24 hour period starts at the last recorded sent time in UTC.
+
+https://api.tangocard.com/raas/v1/orders/115-0112257739-30/resend
+
+24-hr limit error response:
+
+	{
+		"success": false,
+		"error_message": "Cannot send more than once every 24 hours (last send at 2015-02-18T20:17:31+00:00)"
+	}
+	
+Order Not Found
+Incorrect order ID or order not found in the system for this platform.
+
+https://api.tangocard.com/raas/v1/orders/115-0112257739-32/resend
+
+Order Not Found Error Response: 
+	{
+		"success": false,
+		"error_message": "order not found"
+	}
+
+Unable To Send Reward
+If Tango Card cannot resend the reward for a reason other than listed above we will provide a generic error. One example cause for this error would be if Tango Card was not configured to send the email in the original order (send_reward flag was set to “false”). 
+
+Unable to Send Reward Response: 
+
+	{
+		“success”: false,
+		“error_message”: "Unable to resend requested reward.”
+	}
+	
+	
+	
 
 ### Retrieve a historical order.
 
