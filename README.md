@@ -1,6 +1,6 @@
 # Tango Card - Rewards as a Service&trade;
 
-# RaaS&reg; API - Version 1 
+# RaaS&reg; API - Gift Card API
 
 ## Table of Contents
 
