@@ -545,7 +545,7 @@ RULES & IMPORTANT NOTES
 1.	Resend is not supported for emails originally sent prior to February 18, 2015
 2.	The target order (to be resent) must have been sent with the "send_reward" property set to "true" (the default value). This means Tango Card sent the original email. If it was “false” we cannot resend the email because we never sent the original. 
 3.	Orders can be resent once every 24 hours. This is reflected in the error message timestamp if a second attempt is made less than 24 hours after the last send.
-4.	Resend functionality does not have to be specific to the RaaS account. The Resend functionality occurs at the platform level of the RaaS integration. 
+4.	Resend functionality does not have to be specific to a RaaS account. The Resend functionality occurs at the platform level of the RaaS integration. 
 5.	You will need the original order number in order to perform the resend. The Tango Card Order History call allows for a search of past orders and includes the order number for order result. 
 6.	Orders can only be resent to the original recipient. If an administrator needs to verify reward information for a given order, consider using the Get Order Information call instead of the Resend an Order call.
 7.	Resending an email does not guarantee delivery. If the recipient does not receive an email due to spam filter settings, corporate firewalls, etc. resending an email will not get them their reward. The underlying problem will need to be determined and resolved. 
