@@ -486,13 +486,13 @@ Example request/response:
 			"recipient"         : {
 				"name"      : "John Doe",
 				"email"     : "john.doe@example.com"
-			},
-    			"reward": {
-      				"token"     : "55b95ad97f5b99.96804739",
-      				"number"    : "7001204001834392312",
-      				"pin"       : "861693"
+			 },
+		"reward": {
+			"token"        : "55b957d0c54b69.57249418",
+			"number"       : "27VP-CJRLS6-HFV7",
+			"expiration"   : "2025-07-29"
     			}
-		}
+  		}
 	}
 
 For international variable skus, there will be an expiration date ("expiration") in the successful response, if applicable. The format for expiration date is ISO6801 standard date format, example: 2016-06-19 (Year-Month-Day).
@@ -642,10 +642,14 @@ Example request/response:
 			"recipient"         : {
 				"name" : "John Doe",
 				"email": "john.doe@example.com"
-			}
-		}
+			},
+		"reward": {
+			"token"        : "55b957d0c54b69.57249418",
+			"number"       : "27VP-CJRLS6-HFV7",
+			"expiration"   : "2025-07-29"
+    			}
+  		}
 	}
-
 
 
 
