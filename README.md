@@ -6,22 +6,22 @@
 
 - [RaaS API Introduction - Version 1.1](#raas-api---version-1.1)
 	- [What is RaaS](#what-is-the-raas-api)
-	- [Authentication] (#test-drive-the-raaS-api)
+	- [Authentication](#test-drive-the-raaS-api)
 	- [System Notes](#system-notes)
-	- [RaaS Best Practices] (#raas-best-practices)
+	- [RaaS Best Practices](#raas-best-practices)
 	- [SSL/TLS](#ssltls)
 - [Methods](#methods)
-	- [Platform Setup] (#platform-setup)
-	- [Create Account] (#create-account)
-	- [Get Account Information] (#get-account-information)
-	- [Register a Credit Card] (#register-a-credit-card)
-	- [Delete a Credit Card] (#delete-a-credit-card)
-	- [Fund an Account] (#fund-an-account)
-	- [Get Reward Catalog] (#get-reward-catalog)
-	- [Place an Order] (#place-an-order)
-	- [Resend an Order] (#resend-an-order)
-	- [Get Order Information] (#get-order-information)
-	- [Get Order History] (#get-order-history)
+	- [Platform Setup](#platform-setup)
+	- [Create Account](#create-account)
+	- [Get Account Information](#get-account-information)
+	- [Register a Credit Card](#register-a-credit-card)
+	- [Delete a Credit Card](#delete-a-credit-card)
+	- [Fund an Account](#fund-an-account)
+	- [Get Reward Catalog](#get-reward-catalog)
+	- [Place an Order](#place-an-order)
+	- [Resend an Order](#resend-an-order)
+	- [Get Order Information](#get-order-information)
+	- [Get Order History](#get-order-history)
 - [Responses](#responses)
 	- [Generic Errors](#generic-errors)
 		- [Authentication Needed](#authentication-needed)
@@ -379,6 +379,8 @@ Example request/response below
 * Third Example - International Reward Fixed Denomination
 * Fourth Example - International Reward Variable Denomination
 
+Example request/response:
+
 	> GET /raas/v1/rewards HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
@@ -476,7 +478,8 @@ Example request/response below
 	}
 		
 
-		
+
+
 ## Order Methods
 
 
