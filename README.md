@@ -4,25 +4,24 @@
 
 ## Table of Contents
 
-- [RaaS API - Version 1](#raas-api---version-1)
+- [RaaS API Introduction - Version 1.1](#raas-api---version-1.1)
 	- [What is RaaS](#what-is-the-raas-api)
-	- [System-wide Notes](#system-wide-notes)
+	- [Authentication] (#test-drive-the-raaS-api)
+	- [System Notes](#system-notes)
+	- [RaaS Best Practices] (#raas-best-practices)
 	- [SSL/TLS](#ssltls)
-- [Resources](#resources)
-	- [Account Resources](#account-resources)
-		- [Create a new platform account](#create-a-new-platform-account)
-		- [Get the information for a specific platform account](#get-the-information-for-a-specific-platform-account)
-	- [Fund Resources](#fund-resources)
-		- [Register a credit card to an account](#register-a-credit-card-to-an-account)
-		- [Fund a platform's account](#fund-a-platforms-account)
-		- [Delete a credit card from an account](#delete-a-credit-card-from-an-account)
-	- [Reward Resources](#reward-resources)
-		- [Get the catalog of available items](#get-the-catalog-of-available-items)
-	- [Order Resources](#order-resources)
-		- [Place an order](#place-an-order)
-		- [Resend an order](#resend-an-order)
-		- [Retrieve a historical order](#retrieve-a-historical-order)
-		- [Retrieve a list of historical orders](#retrieve-a-list-of-historical-orders)
+- [Methods](#methods)
+	- [Platform Setup] (#platform-setup)
+	- [Create Account] (#create-account)
+	- [Get Account Information] (#get-account-information)
+	- [Register a Credit Card] (#register-a-credit-card)
+	- [Delete a Credit Card] (#delete-a-credit-card)
+	- [Fund an Account] (#fund-an-account)
+	- [Get Reward Catalog] (#get-reward-catalog)
+	- [Place an Order] (#place-an-order)
+	- [Resend an Order] (#resend-an-order)
+	- [Get Order Information] (#get-order-information)
+	- [Get Order History] (#get-order-history)
 - [Responses](#responses)
 	- [Generic Errors](#generic-errors)
 		- [Authentication Needed](#authentication-needed)
@@ -33,10 +32,10 @@
 		- [Resource Exists](#resource-exists)
 		- [Invalid Resource Entity](#invalid-resource-entity)
 		- [Invalid Accept Content-type](#invalid-accept-content-type)
-	- [Resource Errors](#resource-errors)
+	- [Method Errors](#method-errors)
 		- [Fund Create - Payment Error (Credit Card)](#fund-create---payment-error-credit-card)
 		- [Order create - Insufficient Funds](#order-create---insufficient-funds)
-	- [Resource Successes](#resource-successes)
+	- [Method Successes](#method-successes)
 		- [Account Created](#account-created)
 		- [Account](#account)
 		- [Credit card registered](#credit-card-registered)
@@ -47,22 +46,42 @@
 		- [Order](#order)
 		- [Rewards List](#rewards-list)
 
-		
+## RaaS API Version 1.1 Introduction
+
 ## What is the RaaS&reg; API?
 
-With our RaaS API you can elegantly knit a sophisticated rewards program into your platform. Create an account, fund an account, manage catalog, send rewards, and get order history - all available on demand, real time, and as a service.
+With our RESTful RaaS API you can integrate a global reward or incentive program into your platform. The following methods are available:
+
+PLATFORM SETUP - Name, Key, and Auth
+CREATE AN ACCOUNT - Versatility to create multiple account structures to support many use cases
+GET ACCOUNT INFORMATION - Call up information about accounts in your platform
+REGISTER A CREDIT CARD - Securely save up to 10 credit cards to accounts with our third-party payment partner
+FUND AN ACCOUNT - Call up your saved credit card(s) and use them to fund accounts
+DELETE A CREDIT CARD - Remove saved credit cards for good
+GET THE CATALOG - Call up pur catalog of e-gift cards, donations, prepaid visas, and bitcoin e-gift cards
+PLACE AN ORDER - Place and order for a reward. Choose whether Tango Card delivers the reward via email
+RESEND AN ORDER - Simply resend an order that has already been placed
+GET ORDER INFORMATION - Call up order information about an individual order
+GET ORDER HISTORY - Call up a list of orders for an account
+
+## Authentication
 
 ## Test drive the RaaS API
 
 You can test drive the RaaS API without writing a single line of code!  
 
-Using the [RaaS API Test Console](https://integration-www.tangocard.com/raas_api_console/), you can easily go through each resource supported our API and see the requests and the responses for each of these resources. When you are comfortable with the concepts you can begin coding by requesting Sandbox credentials for our test site. Then, if you run into problems during the coding phase you can come back to our console and compare your JSON to our requests and responses to see what is different.
-
+Using the [RaaS API Test Console](https://integration-www.tangocard.com/raas_api_console/), you can easily go through each method supported in our API and see the requests and the responses for each of these resources. When you are comfortable with the concepts you can begin coding by requesting Sandbox credentials for our test site. Then, if you run into problems during the coding phase you can come back to our console and compare your JSON to our requests and responses.
 
 ## Sandbox credentials
 
-Please email sdk@tangocard.com to receive credentials for the RaaS API Sandbox environment. 
+Please email sdk@tangocard.com to receive your own credentials for the RaaS API Sandbox environment. 
 The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1/
+
+You may also use these general credentials to get started - they are the same credentials that are pre-loaded in the RaaS API Test Console.
+
+Platform Name: TangoTest
+Platform Key: 5xItr3dMDlEWAa9S4s7vYh7kQ01d5SFePPUoZZiK/vMfbo3A5BvJLAmD4tI=
+Platform Authorization: Basic VGFuZ29UZXN0OjV4SXRyM2RNRGxFV0FhOVM0czd2WWg3a1EwMWQ1U0ZlUFBVb1paaUsvdk1mYm8zQTVCdkpMQW1ENHRJPQ==
 
 An important note about *Test Codes*: Rewards delivered from Tango Card's Sandbox environment contain sample codes and have no monetary or reemable value. Additionally, please note that some Amazon.com denominations, like $20, may fail in the Sandbox environment. This is intentional behavior for the purpose of simulating an API error. If you encounter an error when testing an Amazon.com code, please try another denomination. Be assured that Amazon.com orders work consistently in the production environment. 
 
@@ -80,8 +99,7 @@ The endpoint for the RESTful interface on the Production environment is https://
 
 Our now-depricated legacy SDKs used username and password credentials (like those used for user accounts on our website). If you are upgrading to the RaaS API from one of our legacy SDKs, please note that our RaaS API uses a Platform Name and Platform Key that need to be created for your RaaS API account and you can not mix the credentials for TangoCard.com site with the credentials for the RaaS API.
 
-
-## System-wide Notes
+## System Notes
 
 * [JSON](http://en.wikipedia.org/wiki/JSON) is the only currently-supported content type for inputs or outputs. It is not required that the requests contain an Accept header, but if they do it should contain "application/json" or "*/*.
 * All calls require the platform's authentication. Authentication uses [HTTP Basic auth](http://en.wikipedia.org/wiki/Basic_access_authentication) with the platform name as the username and the platform access key as the password. These will be assigned by Tango Card.
@@ -91,6 +109,9 @@ Our now-depricated legacy SDKs used username and password credentials (like thos
 * Fields in the RaaS API response objects may be added at any time. This means that whatever is used to demarshall the JSON responses into native data types needs to be able to handle unknown fields without failing.
 * All responses may include a `system_message` field. This is a note from TangoCard to the platforms and not intended for end users. This will notify of things like planned outages and should be monitored.
 
+## RaaS Best Practices
+
+---NEED CONTENT---
 
 ## SSL/TLS
 
@@ -127,15 +148,14 @@ requests.get('https://integration-api.tangocard.com/fake/example',
 One thing to take note of in both examples is that OpenSSL is being instructed to **VERIFY PEER**. This setting is essential as without it you will know that your communication is encrypted, but you won't know who it is you're talking to.
  
 Note: We use a wild-card certificate from DigiCert and hence the certificate chain is the same for both Sandbox and Production environments.
- 
 
 
-# Resources
+# Methods
 
 
-## Account Resources
+## Account Methods
 
-The following is a section of resources related to the platform's accounts.
+The following is a section of methods related to the platform's accounts.
 
 * An "account identifier" in the system can be whatever is convenient for the platform as long as it adheres to the following rules:
  * Between 5 and 96 characters in length (inclusive).
@@ -146,7 +166,7 @@ The following is a section of resources related to the platform's accounts.
 
 
 
-### Create a new platform account.
+### Create Account
 
 POST /raas/v1/accounts
 
@@ -187,7 +207,7 @@ Example request/response:
 
 
 
-### Get the information for a specific platform account.
+### Get Account Information
 
 GET /raas/v1/accounts/{customer}/{account_identifier}
 
@@ -213,13 +233,11 @@ Example request/response:
 			"available_balance": 0
 		}
 	}
+ 
+## Fund Methods
 
 
-
-## Fund Resources
-
-
-### Register a credit card to an account.
+### Register a Credit Card
 
 POST /raas/v1/cc_register
 
@@ -271,7 +289,38 @@ Example request/response:
 - For Sandbox testing you *MUST* use the test credit card number "4111111111111111", as reflected in the above example. Other fake credit card numbers and valid credit card numbers are not supported in the Sandbox environment.
 
 
-### Fund a platform's account.
+### Delete a Credit Card
+
+POST /raas/v1/cc_unregister
+
+The input object is defined by [the cc_unregister JSON-Schema](cc_unregister.schema.json).
+
+Example request/response:
+
+	> POST /raas/v1/cc_unregister HTTP/1.1
+	> Authorization: Basic ...
+	> Host: integration-api.tangocard.com
+	> Accept: */*
+	> Content-Length: ...
+	> Content-Type: application/json
+	> 
+	{
+	  "customer": "CompanyA",
+	  "account_identifier": "123456",
+	  "cc_token": "152686945"
+	}
+
+	< HTTP/1.1 200 OK
+	< Content-Type: application/json; charset=utf-8
+	< Content-Length: ...
+	<
+	{
+      "success": true,
+      "message": "This card is no longer present in the system."
+	}
+
+
+### Fund an Account.
 
 POST /raas/v1/cc_fund
 
@@ -306,51 +355,29 @@ Example request/response:
 	}
 
 
-	
-### Delete a credit card from an account.
 
-POST /raas/v1/cc_unregister
-
-The input object is defined by [the cc_unregister JSON-Schema](cc_unregister.schema.json).
-
-Example request/response:
-
-	> POST /raas/v1/cc_unregister HTTP/1.1
-	> Authorization: Basic ...
-	> Host: integration-api.tangocard.com
-	> Accept: */*
-	> Content-Length: ...
-	> Content-Type: application/json
-	> 
-	{
-	  "customer": "CompanyA",
-	  "account_identifier": "123456",
-	  "cc_token": "152686945"
-	}
-
-	< HTTP/1.1 200 OK
-	< Content-Type: application/json; charset=utf-8
-	< Content-Length: ...
-	<
-	{
-      "success": true,
-      "message": "This card is no longer present in the system."
-	}
+## Reward Methods
 
 
-
-## Reward Resources
-
-
-### Get the catalog of available items.
+### Get Reward Catalog
 
 GET /raas/v1/rewards
 
-* A negative-value "unit price" indicates that the item has a variable price. In this case the minimum and maximum fields should be consulted.
-* Fixed value items also include "denomination", "currency_code", and "locale".  These values represent the face value currency, while "currency_type" relates to "unit_price"
-* The "denomination" is the face value of the gift card and the "unit_price" is the cost of the gift card in USD.
+Reponse Notes
+* "type" denotes whether the "brand" is a "reward" (e-gift card or prepaid card) or a "npo" (non-profit donation)
+* "description" is the brand approved name of the reward
+* "sku" is the unique ID to use when placing an order
+* "is-variable" denotes whether a brand has a variable range of values ("true") or has fixed denominations to choose from ("false")
+* If a brand is variable, the range is defined, in cents, by "min_price" and "max_price"
+* If a brand is fixed, the face value of the brand is defined, in cents, by "denomination"
+* "countries" uses a two digit country code to define the languages the brand is available in. "ountries" is an array.
+* "xrates" is a list of international exchange rates to USD. The list is updated daily.
 
-Example request/response:
+Example request/response below
+* First Reponse Example - US Reward Fixed Denomination
+* Second Example - US Reward Varibale Denomination
+* Third Example - International Reward Fixed Denomination
+* Fourth Example - International Reward Variable Denomination
 
 	> GET /raas/v1/rewards HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
@@ -366,78 +393,95 @@ Example request/response:
 		"success": true,
 		"brands" : [
 			{
-				"description": "Tango Card",
-				"image_url": "http://static.tangocard.com/graphics/item-images/tango-card-gift-card.png",
-				"rewards"    : [
-					{
-						"description"  : "Tango Card E-Custom",
-						"sku"          : "TNGO-E-V-STD",
-						"currency_type": "USD",
-						"unit_price"   : -1,
-						"available"    : true,
-						"min_price"    : "100",
-						"max_price"    : "100000"
-					}
-				]
-			},
-			{
-				"description": "Amazon.com",
-				"image_url": "http://static.tangocard.com/graphics/item-images/amazon-gift-card.png",
-				"rewards"    : [
-					{
-						"description"  : "Amazon E-Gift Card Custom",
-						"sku"          : "AMZN-E-V-STD",
-						"currency_type": "USD",
-						"unit_price"   : -1,
-						"available"    : true,
-						"min_price"    : "100",
-						"max_price"    : "100000"
-					}
-				]
-			},
-			{
 				"description": "Apple iTunes",
 				"image_url": "http://static.tangocard.com/graphics/item-images/itunes-gift-card.png",
 				"rewards"    : [
 					{
+						"type"         : "reward",
 						"description"  : "iTunes E-Gift Card $15",
 						"sku"          : "APPL-E-1500-STD",
-						"currency_type": "USD",
-						"unit_price"   : 1500,
-						"available"    : true
-					},
-					{
-						"description"  : "iTunes E-Gift Card $25",
-						"sku"          : "APPL-E-2500-STD",
-						"currency_type": "USD",
-						"unit_price"   : 2500,
+						"is_variable"  : false,
+						"denomination" : 1500,
+						"currency_code": "USD"
 						"available"    : true,
-						"denomination" : 2500,
-						"currency_code": "USD",
-						"locale"       : "en_US"
+						"countries"    : ["US"]
 					},
+				]
+			}
+			{
+				"description": "Tango Card",
+				"image_url": "http://static.tangocard.com/graphics/item-images/tango-card-gift-card.png",
+				"rewards"    : [
 					{
-						"description"  : "iTunes E-Gift Card $50",
-						"sku"          : "APPL-E-5000-STD",
-						"currency_type": "USD",
-						"unit_price"   : 5000,
+						"type"         : "reward",
+						"description"  : "Tango Card E-Custom",
+						"sku"          : "TNGO-E-V-STD",
+						"is_variable"  : true,
 						"available"    : true,
-						"denomination" : 5000,
-						"currency_code": "USD",
-						"locale"       : "en_US"
+						"min_price"    : 100,
+						"max_price"    : 100000,
+						"currency_code": "USD"
+						"countries"    : ["US"]
+					},
+				]
+			},
+			{
+				"description": "Amazon.ca",
+				"image_url": "https://dwwvg90koz96l.cloudfront.net/graphics/item-images/amazon-canada-gift-card.png",
+				"rewards"    : [
+					{
+						"type”         : "reward",         
+						"description"  : "Amazon.ca Gift Certificate CAD$5",
+						"sku"          : "AMCA-E-500-STD",
+						"is_variable"  : false,
+						"available"    : true,
+						"denomination" : "500",
+						"currency_code": "CAD",
+						"countries"    : ["CA"]   
+					},
+				]
+			}
+			{
+				"description": "Swift Visa Europe",
+				"image_url": "https://dwwvg90koz96l.cloudfront.net/graphics/item-images/eurswiftvisa-eur-gift-card-custom.png",
+				"rewards"    : [
+					{
+						"type"         : "reward",         
+						"description"  : "European Swift Visa (Custom)",
+						"sku"          : "SWIFTVISA-E-V-STD",
+						"is_variable"  : true,
+						"currency_code": "EUR",
+						"available"    : true,
+						"min_price"    : 1,
+						"max_price"    : 200000,
+						"countries"    : ["DE","FR","IT","ES"]
 					}
 				]
 			}
 		]
+		"xrates":{
+			"disclaimer": "Exchange rates are provided for estimation. Actual rates at time of order may vary… etc. ",
+			"timestamp": 1439402461,
+			"rates": [
+				{
+					"AUD": 1.356359,
+					"CAD": 1.30066,
+					"CNY": 6.373144,
+					"EUR": 0.895154,
+					"GBP": 0.639733,
+					"JPY": 124.246
+				}
+			]
+		}
 	}
+		
+
+		
+## Order Methods
 
 
 
-## Order Resources
-
-
-
-### Place an order.
+### Place an Order
 
 POST /raas/v1/orders
 
@@ -533,7 +577,7 @@ Example success response for international variable sku:
 	}
 
 
-### Resend an order.
+### Resend an Order
 
 The Resend functionality allows Tango Card RaaS API Platform partners to resend reward emails to the original recipient on demand. This may be useful if a recipient reports that they never received or cannot find a reward email. 
 
@@ -611,7 +655,7 @@ Unable to Send Reward Response:
 	
 	
 
-### Retrieve a historical order.
+### Get Order Information
 
 GET /raas/v1/orders/{order_id}
 
@@ -653,7 +697,7 @@ Example request/response:
 
 
 
-### Retrieve a list of historical orders.
+### Get Order History
 
 GET /raas/v1/orders{?start_date,end_date,offset,limit,customer,account_identifier}
 
@@ -709,8 +753,6 @@ Example request/response:
 			}
 		]
 	}
-
-
 
 # Responses
 
@@ -831,7 +873,7 @@ Error RAAS:OC:1003
 This a catch-all system error for which more specific messaging has not yet been created.  If you encounter this error please contact sdk@tangocard.com and include your request and response JSON.
 
 
-## Resource Errors
+## Method Errors
 
 
 
@@ -863,7 +905,7 @@ There were not enough funds available in the account to cover the cost of the or
 
 
 
-## Resource Successes
+## Method Successes
 
 
 
