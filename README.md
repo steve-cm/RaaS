@@ -111,7 +111,7 @@ Our now-depricated legacy SDKs used username and password credentials (like thos
 
 ## RaaS Best Practices
 
----NEED CONTENT---
+Retries - Network vagaries, infrastructure and supplier factors mean occasional network errors are inevitable and must be planned for. For this reason we recommend that you build an "exponential back off" or similar retry algorithm in which the timeout value for retry increases after each unsuccessful attempt. Exponential retries are well-documented elsewhere and beyond the scope of this document.
 
 ## SSL/TLS
 
@@ -1081,7 +1081,3 @@ A list of rewards.
 			* locale : (string) For fixed price rewards, this denotes the main region/culture of the denomination. (e.g., "en_US") This is provided for ease of regional formatting.  Field will not be present for variable.
 		
 
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/0d99126c1cf8686391099d328e3c2363 "githalytics.com")](http://githalytics.com/github.com/tangocarddev)
-
-<img height='1' width='1' border='0' src='Https://www.clickmeter.com/conversion.aspx?id=DA1A71157B29421C874CA3B6AEB6F02E&val=0.00&param=empty&com=0.00' />
