@@ -6,12 +6,13 @@
 
 - [RaaS API Introduction - Version 1.1](#raas-api---version-1.1)
 	- [What is RaaS](#what-is-the-raas-api)
+	- [What changed in v1.1](#what-changed-in-v1.1)
+	- [Platform Setup](#platform-setup)
 	- [Authentication](#test-drive-the-raaS-api)
 	- [System Notes](#system-notes)
 	- [RaaS Best Practices](#raas-best-practices)
 	- [SSL/TLS](#ssltls)
 - [Methods](#methods)
-	- [Platform Setup](#platform-setup)
 	- [Create Account](#create-account)
 	- [Get Account Information](#get-account-information)
 	- [Register a Credit Card](#register-a-credit-card)
@@ -63,6 +64,10 @@ PLACE AN ORDER - Place and order for a reward. Choose whether Tango Card deliver
 RESEND AN ORDER - Simply resend an order that has already been placed
 GET ORDER INFORMATION - Call up order information about an individual order
 GET ORDER HISTORY - Call up a list of orders for an account
+
+## What Changed in v1.1
+
+## Platform Setup
 
 ## Authentication
 
