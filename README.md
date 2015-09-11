@@ -6,7 +6,7 @@
 
 - [RaaS API Introduction - Version 1.1](#raas-api---version-1.1)
 	- [What is RaaS](#what-is-the-raas-api)
-	- [What changed in v1.1](#what-changed)
+	- [What changed in v1.1](#what-changed-in-v11)
 	- [Platform Setup](#platform-setup)
 		- [Platform Configurations](#platform-configurations)
 		- [Authentication](#authentication)
