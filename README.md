@@ -68,6 +68,43 @@ Our API is made to support multiple account structures. Following [Platform Setu
 
 ## What Changed in v1.1
 
+The goal of the RaaS API v1.1 is to prepare our API to support global reward and incentive programs in localized currencies and languages.
+
+### Summary of Key Changes
+
+Get Reward Catalog Method Changes
+* Removed currency_type (all items) because it was confusing. It was always USD and referred to the currency type that is deducted from the account not the face value of the reward.
+* Removed unit_price (all items) because the cost of international items will update at least daily. Customers are now directed to calculate xrates against denomination to estimate the current cost.  
+* Removed locale (fixed items) due to limitations. Not currently a use case to isolate products by different cultures within a country and cannot designate rewards as being available for more than a single country.
+* Added type to indicate whether the type is “reward” or “npo” or possibly some other type in the future.
+* Added denomination (fixed items) consistently to catalog call for the face value. 
+* Added countries (all items) to catalog call– Replaces locale. Two digit country code for reward redemption. Now able to provide multiple countries in an array (e.g. SWIFT Visa Euro)
+* Added is_variable (all items) to catalog call– With the removal of unit_price we needed to add a way for customers to parse by whether a reward is variable or fixed. 
+* Added xrates and exchange rates disclaimer language to catalog call – provides a list of exchange rates by country, updated on a daily basis. 
+
+Order Response Changes
+* Removed amount (al items) – see above 
+* Removed ”[data]": " echo response. (applies to all item types). Fixed empty reward_subject response.
+* Added denomination / value / currency_code (all items) – See above
+* Added amount_charged (all items) to reflect the amount (in USD) deducted from the account. This eliminates the confusion previously associated with “amount”
+
+Order Details & Order History Changes
+* Added denomination / value / currency_code  - See above
+* Added amount_charged - See above
+
+API Methods with no changes between v1.0 and v1.1
+* Platform set up
+* Create Account (/accounts)
+* Get Account Information (/<account-id>)
+* Register a Credit Card (/cc_register)
+* Fund Account (/cc_fund)
+* Delete a Credit Card (cc_unregister)
+* Order Request (/orders)
+* Resend an Order (/resend)
+
+Note: RaaS v1.0 platform customers that convert to v1.1 will continue to be able use the order details and order history calls for transactions that occurred on v1.0. For Order History, the "denomination" value will appear as null for orders placed in v1.0
+
+
 ## Platform Setup
 
 ## Authentication
