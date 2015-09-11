@@ -8,10 +8,11 @@
 	- [What is RaaS](#what-is-the-raas-api)
 	- [What changed in v1.1](#what-changed-in-v1.1)
 	- [Platform Setup](#platform-setup)
-	- [Authentication](#authentication)
-	- [System Notes](#system-notes)
-	- [RaaS Best Practices](#raas-best-practices)
-	- [SSL/TLS](#ssltls)
+		- [Platform Configurations](#platform-configurations)
+		- [Authentication](#authentication)
+		- [System Notes](#system-notes)
+		- [RaaS Best Practices](#raas-best-practices)
+		- [SSL/TLS](#ssltls)
 - [Methods](#methods)
 	- [Create Account](#create-account)
 	- [Get Account Information](#get-account-information)
@@ -107,15 +108,17 @@ Note: RaaS v1.0 platform customers that convert to v1.1 will continue to be able
 
 ## Platform Setup
 
-## Authentication
+### Platform Configurations
 
-## Test drive the RaaS API
+### Test drive the RaaS API
 
 You can test drive the RaaS API without writing a single line of code!  
 
 Using the [RaaS API Test Console](https://integration-www.tangocard.com/raas_api_console/), you can easily go through each method supported in our API and see the requests and the responses for each of these resources. When you are comfortable with the concepts you can begin coding by requesting Sandbox credentials for our test site. Then, if you run into problems during the coding phase you can come back to our console and compare your JSON to our requests and responses.
 
-## Sandbox credentials
+### Authentication
+
+### Sandbox credentials
 
 Please email sdk@tangocard.com to receive your own credentials for the RaaS API Sandbox environment. 
 The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1/
@@ -131,18 +134,18 @@ An important note about *Test Codes*: Rewards delivered from Tango Card's Sandbo
 When you have completed your development and are ready for production testing / launch you can request production credentials.
 
 
-## Production credentials
+### Production credentials
 
 Once you are ready to move to production, you need to agree to the [RaaS API Terms & Conditions](https://www.tangocard.com/tango_card_agreements/#ETOS). 
 Once you agree to the Terms & Conditions, we will create credentials on the Production environment and follow up with you. 
 The endpoint for the RESTful interface on the Production environment is https://api.tangocard.com/raas/v1/
 
 
-## RaaS API credentials versus TangoCard.com user credentials
+### RaaS API credentials versus TangoCard.com user credentials
 
 Our now-depricated legacy SDKs used username and password credentials (like those used for user accounts on our website). If you are upgrading to the RaaS API from one of our legacy SDKs, please note that our RaaS API uses a Platform Name and Platform Key that need to be created for your RaaS API account and you can not mix the credentials for TangoCard.com site with the credentials for the RaaS API.
 
-## System Notes
+### System Notes
 
 * [JSON](http://en.wikipedia.org/wiki/JSON) is the only currently-supported content type for inputs or outputs. It is not required that the requests contain an Accept header, but if they do it should contain "application/json" or "*/*.
 * All calls require the platform's authentication. Authentication uses [HTTP Basic auth](http://en.wikipedia.org/wiki/Basic_access_authentication) with the platform name as the username and the platform access key as the password. These will be assigned by Tango Card.
@@ -152,11 +155,11 @@ Our now-depricated legacy SDKs used username and password credentials (like thos
 * Fields in the RaaS API response objects may be added at any time. This means that whatever is used to demarshall the JSON responses into native data types needs to be able to handle unknown fields without failing.
 * All responses may include a `system_message` field. This is a note from TangoCard to the platforms and not intended for end users. This will notify of things like planned outages and should be monitored.
 
-## RaaS Best Practices
+### RaaS Best Practices
 
 Retries - Network vagaries, infrastructure and supplier factors mean occasional network errors are inevitable and must be planned for. For this reason we recommend that you build an "exponential back off" or similar retry algorithm in which the timeout value for retry increases after each unsuccessful attempt. Exponential retries are well-documented elsewhere and beyond the scope of this document.
 
-## SSL/TLS
+### SSL/TLS
 
 All communication with Tango Card's RaaS API is handled over SSL, a commonly-used protocol for managing secured message transmissions on the Internet. As a result, clients of the RaaS API need to ensure that you have the [chain (intermediate) certificate](http://en.wikipedia.org/wiki/Intermediate_certificate_authorities) in place on your server. This is important as not having the chain certificate in place will (at best) disallow communication or (at worst) expose you to the potential for [man-in-the-middle attacks](http://en.wikipedia.org/wiki/Man-in-the-middle_attack). To accomplish this, we recommend you add the CA's cert to your system's trusted list. If that's not possible, an alternative is to include the certificate in your application. Major CAs deliver a ‘bundled’ file containing the complete certificate chain providing a single installation method for the certificate.
  
@@ -191,6 +194,7 @@ requests.get('https://integration-api.tangocard.com/fake/example',
 One thing to take note of in both examples is that OpenSSL is being instructed to **VERIFY PEER**. This setting is essential as without it you will know that your communication is encrypted, but you won't know who it is you're talking to.
  
 Note: We use a wild-card certificate from DigiCert and hence the certificate chain is the same for both Sandbox and Production environments.
+
 
 
 # Methods
