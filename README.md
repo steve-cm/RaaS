@@ -8,7 +8,7 @@
 	- [What is RaaS](#what-is-the-raas-api)
 	- [What changed in v1.1](#what-changed-in-v1.1)
 	- [Platform Setup](#platform-setup)
-	- [Authentication](#test-drive-the-raaS-api)
+	- [Authentication](#authentication)
 	- [System Notes](#system-notes)
 	- [RaaS Best Practices](#raas-best-practices)
 	- [SSL/TLS](#ssltls)
@@ -51,9 +51,10 @@
 
 ## What is the RaaS&reg; API?
 
-With our RESTful RaaS API you can integrate a global reward or incentive program into your platform. The following methods are available:
+With our RESTful RaaS API you can integrate a global reward or incentive program into your platform. 
 
-PLATFORM SETUP - Name, Key, and Auth
+Our API is made to support multiple account structures. Following [Platform Setup](#platform-setup) and [Authentication](#authentication), the following methods are available:
+
 * CREATE AN ACCOUNT - Versatility to create multiple account structures to support many use cases
 * GET ACCOUNT INFORMATION - Call up information about accounts in your platform
 * REGISTER A CREDIT CARD - Securely save up to 10 credit cards to accounts with our third-party payment partner
