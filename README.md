@@ -570,24 +570,32 @@ Example request/response:
 	< Content-Length: 297
 	< 
 	{
-		"success": true,
-		"order"  : {
-			"order_id"          : "123-12345678-12",
-			"account_identifier": "12345678",
-			"sku"               : "TNGO-E-V-STD",
-			"amount"            : 1000,
-			"reward_message"    : "Thank you for participating in the XYZ survey.",
-			"reward_subject"    : "XYZ Survey, thank you...",
-			"reward_from"       : "Jon Survey Doe",
-			"delivered_at"      : "2013-03-12T15:17:16+00:00",
-			"recipient"         : {
-				"name"      : "John Doe",
-				"email"     : "john.doe@example.com"
+  		"success": true,
+  		"order": {
+    			"order_id": "123-12345678-12",
+    			"account_identifier": "123456",
+    			"customer": "CompanyA",
+    			"sku": "TNGO-E-V-STD",
+    			"denomination": {
+      				"value": 1000,
+      				"currency_code": "USD"
+    			},
+    			"amount_charged": {
+      				"value": 1000,
+      				"currency_code": "USD"
+    			},
+    			"reward_message": "Way to go, John! Thank you!",
+    			"reward_subject": "Here's your reward!",
+    			"reward_from": "John From",
+    			"delivered_at": "2015-09-14T20:37:17+00:00",
+    			"recipient": {
+      				"name": "John Doe",
+      				"email": "joe@email.com"
 			 },
-		"reward": {
-			"token"        : "55b957d0c54b69.57249418",
-			"number"       : "27VP-CJRLS6-HFV7",
-			"expiration"   : "2025-07-29"
+    			"reward": {
+      				"token": "55f72ffdcb0497.77517620",
+      				"number": "7001204001394915814",
+      				"pin": "560299"
     			}
   		}
 	}
@@ -604,27 +612,32 @@ Example success response for international variable sku:
 	< Content-Length: 297
 	< 
 	{
-		"success": true,
-		"order": {
-			"order_id"          : "115-07734196-29",
-			"account_identifier": "123456",
-			"customer"          : "CompanyA",
-			"sku"               : "AMZUK-E-V-STD",
-			"amount"            : 1550,
-			"reward_message"    : "Test of reward response",
-			"reward_subject"    : {
-				"data"      : ""
-				},
-			"reward_from"       : "Jane Doe",
-			"delivered_at"      : "2015-07-29T22:46:36+00:00",
-			"recipient"         : {
-				"name" : "John Doe",
-				"email": "john.doe@example.com"
-    	},
-		"reward": {
-			"token"        : "55b957d0c54b69.57249418",
-			"number"       : "27VP-CJRLS6-HFV7",
-			"expiration"   : "2025-07-29"
+  		"success": true,
+  		"order": {
+    			"order_id": "123-12345678-12",
+    			"account_identifier": "123456",
+    			"customer": "CompanyA",
+    			"sku": "AMZCA-E-V-STD",
+    			"denomination": {
+      				"value": 1000,
+      				"currency_code": "CAD"
+    			},
+    			"amount_charged": {
+      				"value": 755,
+      				"currency_code": "USD"
+    			},
+    			"reward_message": "Way to go, John! Thank you!",
+    			"reward_subject": "Here's your reward!",
+    			"reward_from": "John From",
+    			"delivered_at": "2015-09-14T21:14:52+00:00",
+    			"recipient": {
+				"name": "John Doe",
+      				"email": "john@email.com"
+    			},
+    			"reward": {
+      				"token": "55f738cd0a10f2.07381785",
+      				"number": "BGJZ-CVF5L4-B2BG"
+	  			"expiration": "2025-07-29"
     			}
   		}
 	}
