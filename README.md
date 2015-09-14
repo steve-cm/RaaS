@@ -117,6 +117,8 @@ One example is a 1 to 1 structure, wherein there is one platform, one company, a
 ![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-1-to-1-Accounts.png "RaaS API 1 to 1 Account Structure")
 
 
+A second example is a structure with multiple companies, each with their own account or accounts to purchase rewards:
+
 ![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-Multiple-Companies-and-Accounts.png "RaaS API Multiple Companies and Accounts")
 
 ### Test drive the RaaS API
@@ -428,7 +430,7 @@ Reponse Notes
 * If a brand is variable, the range is defined, in cents, by "min_price" and "max_price"
 * If a brand is fixed, the face value of the brand is defined, in cents, by "denomination"
 * "countries" uses a two digit country code to define the languages the brand is available in. "ountries" is an array.
-* "xrates" is a list of international exchange rates to USD. The list is updated daily.
+* "xrates" is a list of international exchange rates to USD. Tango Card updates the exchange rates for non-US items at least once a day. As part of the Get Rewards Catalog method, the API returns the exchange rates currently loaded into our system.
 
 Example request/response below
 * First Reponse Example - US Reward Fixed Denomination
