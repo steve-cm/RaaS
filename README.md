@@ -637,7 +637,7 @@ Example success response for international variable sku:
     			"reward": {
       				"token": "55f738cd0a10f2.07381785",
       				"number": "BGJZ-CVF5L4-B2BG"
-	  			"expiration": "2025-07-29"
+	  			 "expiration": "2025-07-29"
     			}
   		}
 	}
