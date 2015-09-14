@@ -7,7 +7,7 @@
 - [RaaS API Introduction - Version 1.1](#raas-api---version-1.1)
 	- [What is RaaS](#what-is-the-raas-api)
 	- [What changed in v1.1](#what-changed-in-v11)
-	- [Platform Setup](#platform-setup)
+	- [Platform Setup](#platform-setup-and-authentication)
 		- [Platform Configurations](#platform-configurations)
 		- [Authentication](#authentication)
 		- [System Notes](#system-notes)
@@ -106,17 +106,24 @@ API Methods with no changes between v1.0 and v1.1
 Note: RaaS v1.0 platform customers that convert to v1.1 will continue to be able use the order details and order history calls for transactions that occurred on v1.0. For Order History, the "denomination" value will appear as null for orders placed in v1.0
 
 
-## Platform Setup
+## Platform Setup and Authentication
 
 ### Platform Configurations
+
+The RaaS API is capable of supporting rewards and incentives for multiple platform structures.
+
+One example is a 1 to 1 structure, wherein there is one platform, one company, and one account purchasing rewards:
+
+![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-1-to-1-Accounts.png "RaaS API 1 to 1 Account Structure")
+
+
+![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-Multiple-Companies-and-Accounts.png "RaaS API Multiple Companies and Accounts")
 
 ### Test drive the RaaS API
 
 You can test drive the RaaS API without writing a single line of code!  
 
 Using the [RaaS API Test Console](https://integration-www.tangocard.com/raas_api_console/), you can easily go through each method supported in our API and see the requests and the responses for each of these resources. When you are comfortable with the concepts you can begin coding by requesting Sandbox credentials for our test site. Then, if you run into problems during the coding phase you can come back to our console and compare your JSON to our requests and responses.
-
-### Authentication
 
 ### Sandbox credentials
 
