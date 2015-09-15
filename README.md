@@ -10,6 +10,8 @@
 	- [Platform Setup](#platform-setup-and-authentication)
 		- [Platform Configurations](#platform-configurations)
 		- [Authentication](#authentication)
+		- [Sandbox Credentials](#sandbox-credentials)
+		- [Production Credentials](#production-credentials)
 		- [System Notes](#system-notes)
 		- [RaaS Best Practices](#raas-best-practices)
 		- [SSL/TLS](#ssltls)
