@@ -363,9 +363,9 @@ Example request/response:
 	> Content-Type: application/json
 	> 
 	{
-	  "customer": "CompanyA",
-	  "account_identifier": "123456",
-	  "cc_token": "152686945"
+  		"customer": "CompanyA",
+  		"account_identifier": "Account1",
+  		"cc_token": "33465088"
 	}
 
 	< HTTP/1.1 200 OK
@@ -373,8 +373,8 @@ Example request/response:
 	< Content-Length: ...
 	<
 	{
-      "success": true,
-      "message": "This card is no longer present in the system."
+  		"success": true,
+  		"message": "This card is no longer present in the system."
 	}
 
 
@@ -394,12 +394,12 @@ Example request/response:
 	> Content-Type: application/json
 	> 
 	{
-	  "customer": "CompanyA",
-	  "account_identifier": "123456",
-	  "amount": 100000,
-	  "client_ip": "55.44.33.22",
-	  "security_code": "123",
-	  "cc_token": "152686945"
+  		"customer": "CompanyA",
+  		"account_identifier": "Account1",
+  		"amount": 1000,
+  		"client_ip": "127.0.0.1",
+  		"cc_token": "33465088",
+  		"security_code": "123"
 	}
 
 	< HTTP/1.1 200 OK
@@ -407,9 +407,9 @@ Example request/response:
 	< Content-Length: ...
 	<
 	{
-	  "success": true,
-	  "fund_id": "RF11-22222222-33",
-	  "amount" : 100000
+  		"success": true,
+  		"fund_id": "115-0934-16",
+  		"amount": 1000
 	}
 
 
@@ -451,65 +451,141 @@ Example response, US fixed denomination:
 	< Content-Type: application/json; charset=utf-8
 	< 
 	{
-		"success": true,
-		"brands" : [
-			{
-				"description": "Apple iTunes",
-				"image_url": "http://static.tangocard.com/graphics/item-images/itunes-gift-card.png",
-				"rewards"    : [
-					{
-						"type"         : "reward",
-						"description"  : "iTunes E-Gift Card $15",
-						"sku"          : "APPL-E-1500-STD",
-						"is_variable"  : false,
-						"denomination" : 1500,
-						"currency_code": "USD"
-						"available"    : true,
-						"countries"    : ["US"]
-					},
-				]
-			}
-		]
-	}
+  	"success": true,
+  	"brands": [
+    		{
+      		"description": "Chipotle",
+      		"image_url": "https://d54ks1x7dxslx.cloudfront.net/graphics/item-images/chipotle-gift-card.png",
+      		"rewards": [
+        	{
+          		"type": "reward",
+          		"description": "Chipotle Gift Card $5",
+          		"sku": "CHIP-E-500-STD",
+          		"is_variable": false,
+          		"denomination": "500",
+          		"currency_code": "USD",
+          		"available": true,
+          		"countries": [
+            			"US"
+          		]
+        	},
+        	{
+          		"type": "reward",
+          		"description": "Chipotle Gift Card $10",
+          		"sku": "CHIP-E-1000-STD",
+        		"is_variable": false,
+          		"denomination": "1000",
+          		"currency_code": "USD",
+          		"available": true,
+          		"countries": [
+            			"US"
+          		]
+        	},
+        	{
+          		"type": "reward",
+          		"description": "Chipotle Gift Card $25",
+          		"sku": "CHIP-E-2500-STD",
+          		"is_variable": false,
+          		"denomination": "2500",
+          		"currency_code": "USD",
+          		"available": true,
+          		"countries": [
+           			"US"
+          		]
+        	},
+        	{
+          		"type": "reward",
+          		"description": "Chipotle Gift Card $50",
+          		"sku": "CHIP-E-5000-STD",
+          		"is_variable": false,
+          		"denomination": "5000",
+          		"currency_code": "USD",
+          		"available": true,
+          		"countries": [
+            			"US"
+          			]
+        		}
+      		]
+    	},
 
 Example response, US variable denomination:
 
-			{
-				"description": "Tango Card",
-				"image_url": "http://static.tangocard.com/graphics/item-images/tango-card-gift-card.png",
-				"rewards"    : [
-					{
-						"type"         : "reward",
-						"description"  : "Tango Card E-Custom",
-						"sku"          : "TNGO-E-V-STD",
-						"is_variable"  : true,
-						"available"    : true,
-						"min_price"    : 100,
-						"max_price"    : 100000,
-						"currency_code": "USD"
-						"countries"    : ["US"]
-					},
-				]
-			},
+	{
+      		"description": "Tango Card",
+      		"image_url": "https://d54ks1x7dxslx.cloudfront.net/graphics/item-images/tango-card-gift-card.png",
+      		"rewards": [
+        	{
+          		"type": "reward",
+          		"description": "Tango Card E-Custom",
+          		"sku": "TNGO-E-V-STD",
+          		"is_variable": true,
+          		"min_price": 1,
+          		"max_price": 100000,
+          		"currency_code": "USD",
+          		"available": true,
+          		"countries": [
+            			"US"
+          			]
+        		}
+      		]
+    	},
 
 Example response, international fixed denomination:
 
-			{
-				"description": "Amazon.ca",
-				"image_url": "https://dwwvg90koz96l.cloudfront.net/graphics/item-images/amazon-canada-gift-card.png",
-				"rewards"    : [
-					{
-						"type”         : "reward",         
-						"description"  : "Amazon.ca Gift Certificate CAD$5",
-						"sku"          : "AMCA-E-500-STD",
-						"is_variable"  : false,
-						"available"    : true,
-						"denomination" : "500",
-						"currency_code": "CAD",
-						"countries"    : ["CA"]   
-					},
-				]
-			}
+	{
+      		"description": "iTunes Australia",
+      		"image_url": "https://d54ks1x7dxslx.cloudfront.net/graphics/item-images/itunes-australia-gift-card.png",
+      		"rewards": [
+        	{
+          		"type": "reward",
+          		"description": "iTunes Australia Gift Card AUD 10",
+          		"sku": "APAU-E-1000-STD",
+          		"is_variable": false,
+          		"denomination": "1000",
+          		"currency_code": "AUD",
+          		"available": true,
+          		"countries": [
+            			"AU"
+          		]
+        	},
+        	{
+          		"type": "reward",
+        	 	"description": "iTunes Australia Gift Card AUD 15",
+          		"sku": "APAU-E-1500-STD",
+          		"is_variable": false,
+          		"denomination": "1500",
+          		"currency_code": "AUD",
+          		"available": true,
+          		"countries": [
+            			"AU"
+          		]
+        	},
+        	{
+          		"type": "reward",
+          		"description": "iTunes Australia Gift Card AUD 25",
+          		"sku": "APAU-E-2500-STD",
+          		"is_variable": false,
+          		"denomination": "2500",
+          		"currency_code": "AUD",
+          		"available": true,
+          		"countries": [
+            			"AU"
+          		]
+        	},
+        	{
+         		"type": "reward",
+          		"description": "iTunes Australia Gift Card AUD 50",
+          		"sku": "APAU-E-5000-STD",
+          		"is_variable": false,
+          		"denomination": "5000",
+          		"currency_code": "AUD",
+          		"available": true,
+          		"countries": [
+            			"AU"
+          			]
+        		}
+      		]
+    	},
 
 Example response, international variable denomination:
 
