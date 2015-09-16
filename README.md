@@ -222,7 +222,7 @@ The following is a section of methods related to the platform's accounts.
  * Between 5 and 96 characters in length (inclusive).
  * Must be made up exclusively of: alphanumeric (A-Z, a-z, 0-9), underscore (_), dash (-), or plus (+).
  * Must NOT contain characters invalid in a URI. Examples include, but are not limited to: . , ! &. Spaces are not allowed either.
- * Must be unique to the platform.
+ * Must be unique to the company.
 * A "customer" is a mechanism for denoting a company, department, etc an account belongs to. 
 
 
@@ -434,20 +434,21 @@ Response Notes
 * "countries" uses a two digit country code to define the languages the brand is available in. "countries" is an array.
 * "xrates" is a list of international exchange rates to USD. Tango Card updates the exchange rates for non-US items at least once a day. As part of the Get Rewards Catalog method, the API returns the exchange rates currently loaded into our system.
 
-Example request/response below
-* First Response Example - US Reward Fixed Denomination
-* Second Example - US Reward Variable Denomination
-* Third Example - International Reward Fixed Denomination
-* Fourth Example - International Reward Variable Denomination
+Example request/response(s) below. There are four different example responses: US rewards with fixed denominations, US rewards with variable denominations, international fixed, and international variable.
+First Response Example - US Reward Fixed Denomination
+Second Example - US Reward Variable Denomination
+Third Example - International Reward Fixed Denomination
+Fourth Example - International Reward Variable Denomination
 
-Example request/response:
+Example request:
 
 	> GET /raas/v1.1/rewards HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
 	>
-	
+
+Example response, US fixed denomination:
 	
 	< HTTP/1.1 200 OK
 	< Content-Type: application/json; charset=utf-8
@@ -471,6 +472,11 @@ Example request/response:
 					},
 				]
 			}
+		]
+	}
+
+Example response, US variable denomination:
+
 			{
 				"description": "Tango Card",
 				"image_url": "http://static.tangocard.com/graphics/item-images/tango-card-gift-card.png",
@@ -488,6 +494,8 @@ Example request/response:
 					},
 				]
 			},
+
+Example response, international fixed denomination:
 			{
 				"description": "Amazon.ca",
 				"image_url": "https://dwwvg90koz96l.cloudfront.net/graphics/item-images/amazon-canada-gift-card.png",
@@ -504,6 +512,8 @@ Example request/response:
 					},
 				]
 			}
+
+Example response, international variable denomination:
 			{
 				"description": "Swift Visa Europe",
 				"image_url": "https://dwwvg90koz96l.cloudfront.net/graphics/item-images/eurswiftvisa-eur-gift-card-custom.png",
@@ -522,6 +532,8 @@ Example request/response:
 				]
 			}
 		]
+
+Example response, daily exchange rates:
 		"xrates":{
 			"disclaimer": "Exchange rates are provided for estimation. Actual rates at time of order may vary… etc. ",
 			"timestamp": 1439402461,
