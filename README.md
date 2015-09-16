@@ -496,6 +496,7 @@ Example response, US variable denomination:
 			},
 
 Example response, international fixed denomination:
+
 			{
 				"description": "Amazon.ca",
 				"image_url": "https://dwwvg90koz96l.cloudfront.net/graphics/item-images/amazon-canada-gift-card.png",
@@ -514,6 +515,7 @@ Example response, international fixed denomination:
 			}
 
 Example response, international variable denomination:
+
 			{
 				"description": "Swift Visa Europe",
 				"image_url": "https://dwwvg90koz96l.cloudfront.net/graphics/item-images/eurswiftvisa-eur-gift-card-custom.png",
@@ -534,6 +536,7 @@ Example response, international variable denomination:
 		]
 
 Example response, daily exchange rates:
+
 		"xrates":{
 			"disclaimer": "Exchange rates are provided for estimation. Actual rates at time of order may vary… etc. ",
 			"timestamp": 1439402461,
