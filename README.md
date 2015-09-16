@@ -116,12 +116,12 @@ The RaaS API is capable of supporting rewards and incentives for multiple platfo
 
 One example is a 1 to 1 structure, wherein there is one platform, one company, and one account purchasing rewards:
 
-![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-1-to-1-Accounts.png "RaaS API 1 to 1 Account Structure")
+![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-1-to-1-Accounts2.png "RaaS API 1 to 1 Account Structure")
 
 
 A second example is a structure with multiple companies, each with their own account or accounts to purchase rewards:
 
-![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-Multiple-Companies-and-Accounts1.png "RaaS API Multiple Companies and Accounts")
+![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-Multiple-Companies-and-Accounts21.png "RaaS API Multiple Companies and Accounts")
 
 ### Test drive the RaaS API
 
