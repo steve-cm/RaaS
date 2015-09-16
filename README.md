@@ -86,8 +86,8 @@ Get Reward Catalog Method Changes
 * Added xrates and exchange rates disclaimer language to catalog call – provides a list of exchange rates by country, updated on a daily basis. 
 
 Order Response Changes
-* Removed amount (al items) – see above 
-* Removed ”[data]": " echo response. (applies to all item types). Fixed empty reward_subject response.
+* Removed amount (all items) – see above 
+* Removed "[data]": echo response. (applies to all item types). Fixed empty reward_subject response.
 * Added denomination / value / currency_code (all items) – See above
 * Added amount_charged (all items) to reflect the amount (in USD) deducted from the account. This eliminates the confusion previously associated with “amount”
 
@@ -101,11 +101,11 @@ API Methods with no changes between v1.0 and v1.1
 * Get Account Information (/<account-id>)
 * Register a Credit Card (/cc_register)
 * Fund Account (/cc_fund)
-* Delete a Credit Card (cc_unregister)
+* Delete a Credit Card (/cc_unregister)
 * Order Request (/orders)
 * Resend an Order (/resend)
 
-Note: RaaS v1.0 platform customers that convert to v1.1 will continue to be able use the order details and order history calls for transactions that occurred on v1.0. For Order History, the "denomination" value will appear as null for orders placed in v1.0
+Note: RaaS v1.0 platform customers that convert to v1.1 will continue to be able use the order details and order history calls for transactions that occurred on v1.0. For Order History, the "denomination" value will appear as null for orders placed in v1.0.
 
 
 ## Platform Setup and Authentication
@@ -132,7 +132,7 @@ Using the [RaaS API Test Console](https://integration-www.tangocard.com/raas_api
 ### Sandbox credentials
 
 Please email sdk@tangocard.com to receive your own credentials for the RaaS API Sandbox environment. 
-The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1.1/
+The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1.1/ .
 
 You may also use these general credentials to get started - they are the same credentials that are pre-loaded in the RaaS API Test Console.
 
@@ -424,19 +424,19 @@ Example request/response:
 
 GET /raas/v1.1/rewards
 
-Reponse Notes
+Response Notes
 * "type" denotes whether the "brand" is a "reward" (e-gift card or prepaid card) or a "npo" (non-profit donation)
 * "description" is the brand approved name of the reward
 * "sku" is the unique ID to use when placing an order
 * "is-variable" denotes whether a brand has a variable range of values ("true") or has fixed denominations to choose from ("false")
 * If a brand is variable, the range is defined, in cents, by "min_price" and "max_price"
 * If a brand is fixed, the face value of the brand is defined, in cents, by "denomination"
-* "countries" uses a two digit country code to define the languages the brand is available in. "ountries" is an array.
+* "countries" uses a two digit country code to define the languages the brand is available in. "countries" is an array.
 * "xrates" is a list of international exchange rates to USD. Tango Card updates the exchange rates for non-US items at least once a day. As part of the Get Rewards Catalog method, the API returns the exchange rates currently loaded into our system.
 
 Example request/response below
-* First Reponse Example - US Reward Fixed Denomination
-* Second Example - US Reward Varibale Denomination
+* First Response Example - US Reward Fixed Denomination
+* Second Example - US Reward Variable Denomination
 * Third Example - International Reward Fixed Denomination
 * Fourth Example - International Reward Variable Denomination
 
@@ -664,7 +664,7 @@ POST raas/v1/orders/{ORDER_NUMBER}/resend
 
 RULES & IMPORTANT NOTES
 
-1. Resend is not supported for emails originally sent prior to February 18, 2015
+1. Resend is not supported for emails originally sent prior to February 18, 2015.
 
 2. The target order (to be resent) must have been sent with the "send_reward" property set to "true" (the default value). This means Tango Card sent the original email. If it was “false” we cannot resend the email because we never sent the original. 
 
@@ -720,6 +720,7 @@ Order Not Found Error Response:
 	}
 
 Unable To Send Reward
+
 If Tango Card cannot resend the reward for a reason other than listed above we will provide a generic error. One example cause for this error would be if Tango Card was not configured to send the email in the original order (send_reward flag was set to “false”). 
 
 Unable to Send Reward Response: 
