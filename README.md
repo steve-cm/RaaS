@@ -132,7 +132,7 @@ Using the [RaaS API Test Console](https://integration-www.tangocard.com/raas_api
 ### Sandbox credentials
 
 Please email sdk@tangocard.com to receive your own credentials for the RaaS API Sandbox environment. 
-The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1/
+The endpoint for the RESTful interface on the Sandbox environment is https://sandbox.tangocard.com/raas/v1.1/
 
 You may also use these general credentials to get started - they are the same credentials that are pre-loaded in the RaaS API Test Console.
 
@@ -152,7 +152,7 @@ When you have completed your development and are ready for production testing / 
 
 Once you are ready to move to production, you need to agree to the [RaaS API Terms & Conditions](https://www.tangocard.com/tango_card_agreements/#ETOS). 
 Once you agree to the Terms & Conditions, we will create credentials on the Production environment and follow up with you. 
-The endpoint for the RESTful interface on the Production environment is https://api.tangocard.com/raas/v1/
+The endpoint for the RESTful interface on the Production environment is https://api.tangocard.com/raas/v1.1/
 
 
 ### RaaS API credentials versus TangoCard.com user credentials
@@ -229,13 +229,13 @@ The following is a section of methods related to the platform's accounts.
 
 ### Create Account
 
-POST /raas/v1/accounts
+POST /raas/v1.1/accounts
 
 The input object is defined by [this JSON-Schema](account_create.schema.json).
 
 Example request/response:
 
-	> POST /raas/v1/accounts HTTP/1.1
+	> POST /raas/v1.1/accounts HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -251,7 +251,7 @@ Example request/response:
 
 	< HTTP/1.1 201 Created
 	< Content-Type: application/json; charset=utf-8
-	< Location: https://integration-api.tangocard.com/raas/v1/accounts/123456
+	< Location: https://integration-api.tangocard.com/raas/v1.1/accounts/123456
 	< Content-Length: 118
 	< 
 	{
@@ -270,11 +270,11 @@ Example request/response:
 
 ### Get Account Information
 
-GET /raas/v1/accounts/{customer}/{account_identifier}
+GET /raas/v1.1/accounts/{customer}/{account_identifier}
 
 Example request/response:
 
-	> GET /raas/v1/accounts/CompanyA/123456 HTTP/1.1
+	> GET /raas/v1.1/accounts/CompanyA/123456 HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -300,13 +300,13 @@ Example request/response:
 
 ### Register a Credit Card
 
-POST /raas/v1/cc_register
+POST /raas/v1.1/cc_register
 
 The input object is defined by [the cc_register JSON-Schema](cc_register.schema.json).
 
 Example request/response:
 
-	> POST /raas/v1/cc_register HTTP/1.1
+	> POST /raas/v1.1/cc_register HTTP/1.1
 	> Authorization: Basic ...
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -352,13 +352,13 @@ Example request/response:
 
 ### Delete a Credit Card
 
-POST /raas/v1/cc_unregister
+POST /raas/v1.1/cc_unregister
 
 The input object is defined by [the cc_unregister JSON-Schema](cc_unregister.schema.json).
 
 Example request/response:
 
-	> POST /raas/v1/cc_unregister HTTP/1.1
+	> POST /raas/v1.1/cc_unregister HTTP/1.1
 	> Authorization: Basic ...
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -383,13 +383,13 @@ Example request/response:
 
 ### Fund an Account.
 
-POST /raas/v1/cc_fund
+POST /raas/v1.1/cc_fund
 
 The input object is defined by [the cc_fund JSON-Schema](cc_fund.schema.json).
 
 Example request/response:
 
-	> POST /raas/v1/cc_fund HTTP/1.1
+	> POST /raas/v1.1/cc_fund HTTP/1.1
 	> Authorization: Basic ...
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -422,7 +422,7 @@ Example request/response:
 
 ### Get Reward Catalog
 
-GET /raas/v1/rewards
+GET /raas/v1.1/rewards
 
 Reponse Notes
 * "type" denotes whether the "brand" is a "reward" (e-gift card or prepaid card) or a "npo" (non-profit donation)
@@ -442,7 +442,7 @@ Example request/response below
 
 Example request/response:
 
-	> GET /raas/v1/rewards HTTP/1.1
+	> GET /raas/v1.1/rewards HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -547,13 +547,13 @@ Example request/response:
 
 ### Place an Order
 
-POST /raas/v1/orders
+POST /raas/v1.1/orders
 
 The input object is defined by [this JSON-Schema](order_create.schema.json).
 
 Example request/response:
 
-	> POST /raas/v1/orders HTTP/1.1
+	> POST /raas/v1.1/orders HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -577,7 +577,7 @@ Example request/response:
 	
 	< HTTP/1.1 201 Created
 	< Content-Type: application/json; charset=utf-8
-	< Location: https://integration-api.tangocard.com/raas/v1/orders/
+	< Location: https://integration-api.tangocard.com/raas/v1.1/orders/
 	< Content-Length: 297
 	< 
 	{
@@ -619,7 +619,7 @@ Example success response for international variable sku:
 
 	< HTTP/1.1 201 Created
 	< Content-Type: application/json; charset=utf-8
-	< Location: https://integration-api.tangocard.com/raas/v1/orders/
+	< Location: https://integration-api.tangocard.com/raas/v1.1/orders/
 	< Content-Length: 297
 	< 
 	{
@@ -681,7 +681,7 @@ RULES & IMPORTANT NOTES
 
 Example request/response:
 
-   	> POST /raas/v1/orders/123-12345678-12/resend HTTP/1.1
+   	> POST /raas/v1.1/orders/123-12345678-12/resend HTTP/1.1
     	> Authorization: Basic C0FFEEC0FFEEC0FFXXXXXXXX
     	> Host: integration-api.tangocard.com
     	> Accept: */*
@@ -699,7 +699,7 @@ Error Reponses:
 Cannot send more than once every 24 hours
 Resend functionality is limited to once every 24 hours per order. The 24 hour period starts at the last recorded sent time in UTC.
 
-https://api.tangocard.com/raas/v1/orders/115-0112257739-30/resend
+https://api.tangocard.com/raas/v1.1/orders/115-0112257739-30/resend
 
 24-hr limit error response:
 
@@ -711,7 +711,7 @@ https://api.tangocard.com/raas/v1/orders/115-0112257739-30/resend
 Order Not Found
 Incorrect order ID or order not found in the system for this platform.
 
-https://api.tangocard.com/raas/v1/orders/115-0112257739-32/resend
+https://api.tangocard.com/raas/v1.1/orders/115-0112257739-32/resend
 
 Order Not Found Error Response: 
 	{
@@ -734,11 +734,11 @@ Unable to Send Reward Response:
 
 ### Get Order Information
 
-GET /raas/v1/orders/{order_id}
+GET /raas/v1.1/orders/{order_id}
 
 Example request/response:
 
-	> GET /raas/v1/orders/123-12345678-12 HTTP/1.1
+	> GET /raas/v1.1/orders/123-12345678-12 HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -776,7 +776,7 @@ Example request/response:
 
 ### Get Order History
 
-GET /raas/v1/orders{?start_date,end_date,offset,limit,customer,account_identifier}
+GET /raas/v1.1/orders{?start_date,end_date,offset,limit,customer,account_identifier}
 
 * All inputs are optional.
  * start_date / end_date : datetimes (ISO 8601) between which to search
@@ -787,7 +787,7 @@ GET /raas/v1/orders{?start_date,end_date,offset,limit,customer,account_identifie
 
 Example request/response:
 
-	> GET /raas/v1/orders?start_date=2013-03-01T00:00:00-08:00&end_date=2013-04-01T00:00:00-08:00&offset=0&limit=2&account_identifier=12345678&customer=CompanyA HTTP/1.1
+	> GET /raas/v1.1/orders?start_date=2013-03-01T00:00:00-08:00&end_date=2013-04-01T00:00:00-08:00&offset=0&limit=2&account_identifier=12345678&customer=CompanyA HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -992,7 +992,7 @@ An account was created.
 
 * **HTTP Status Code:** 201 Created
 * **HTTP Headers:** 
-	* Location: https://integration-api.tangocard.com/raas/v1/accounts/{customer}/{account_identifier}
+	* Location: https://integration-api.tangocard.com/raas/v1.1/accounts/{customer}/{account_identifier}
 * **Response Object:** 
 	* success : (boolean)
 	* account : (object)
@@ -1059,7 +1059,7 @@ An order was created.
 
 * **HTTP Status Code:** 201 Created
 * **HTTP Headers:** 
-	* Location: https://integration-api.tangocard.com/raas/v1/{order_id}
+	* Location: https://integration-api.tangocard.com/raas/v1.1/{order_id}
 * **Response Object:** 
 	* success : (boolean)
 	* order : (object) Defined by:
