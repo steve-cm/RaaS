@@ -121,7 +121,7 @@ One example is a 1 to 1 structure, wherein there is one platform, one company, a
 
 A second example is a structure with multiple companies, each with their own account or accounts to purchase rewards:
 
-![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-Multiple-Companies-and-Accounts.png "RaaS API Multiple Companies and Accounts")
+![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-Multiple-Companies-and-Accounts1.png "RaaS API Multiple Companies and Accounts")
 
 ### Test drive the RaaS API
 
