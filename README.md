@@ -243,9 +243,9 @@ Example request/response:
 	> Content-Type: application/json
 	>
 	{
-		"identifier": "123456",
-		"email"     : "demo@example.com",
-		"customer"  : "CompanyA"
+		"customer":"CompanyA",
+		"identifier":"Account1",
+		"email":"email@companya.com"
 	}
 
 
@@ -255,13 +255,13 @@ Example request/response:
 	< Content-Length: 118
 	< 
 	{
-		"success": true,
-		"account": {
-			"identifier"       : "123456",
-			"email"            : "demo@example.com",
-			"customer"         : "CompanyA",
-			"available_balance": 0
-		}
+  		"success": true,
+  		"account": {
+    			"identifier": "Account1",
+    			"email": "email@companya.com",
+    			"customer": "CompanyA",
+    			"available_balance": 0
+  		}
 	}
 
 
@@ -274,7 +274,7 @@ GET /raas/v1.1/accounts/{customer}/{account_identifier}
 
 Example request/response:
 
-	> GET /raas/v1.1/accounts/CompanyA/123456 HTTP/1.1
+	> GET /raas/v1.1/accounts/CompanyA/Account1 HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -286,13 +286,10 @@ Example request/response:
 	< Content-Length: 112
 	< 
 	{
-		"success": true,
-		"account": {
-			"identifier"       : "123456",
-			"email"            : "demo@example.com",
-			"customer"         : "CompanyA",
-			"available_balance": 0
-		}
+		"identifier":"Account1",
+		"email":"scotty@tangocard.com",
+		"customer":"CompanyA",
+		"available_balance":0
 	}
  
 ## Fund Methods
@@ -314,24 +311,24 @@ Example request/response:
 	> Content-Type: application/json
 	> 
 	{
-	  "customer": "CompanyA",
-	  "account_identifier": "123456",
-	  "client_ip": "55.44.33.22",
-	  "credit_card": {
-	    "number": "4111111111111111",
-	    "security_code": "123",
-	    "expiration": "2016-11",
-	    "billing_address": {
-	      "f_name": "John",
-	      "l_name": "Doe",
-	      "address": "1234 Fake St",
-	      "city": "Springfield",
-	      "state": "WA",
-	      "zip": "99196",
-	      "country": "USA",
-	      "email": "test@example.com"
-	    }
-	  }
+  		"customer": "CompanyA",
+  		"account_identifier": "Account1",
+  		"client_ip": "127.0.0.1",
+  		"credit_card": {
+    			"number": "4111111111111111",
+    			"security_code": "123",
+    			"expiration": "2016-01",
+    			"billing_address": {
+      				"f_name": "FName",
+      				"l_name": "LName",
+      				"address": "Address",
+      				"city": "Seattle",
+      				"state": "WA",
+      				"zip": "98116",
+      				"country": "USA",
+      				"email": "test@example.com"
+    			}
+  		}
 	}
 	
 	< HTTP/1.1 200 OK
@@ -339,9 +336,9 @@ Example request/response:
 	< Content-Length: ...
 	<
 	{
-      "success": true,
-      "cc_token": "152686945",
-      "active_date": 1405444573
+  		"success": true,
+  		"cc_token": "33465088",
+  		"active_date": 1442434992
 	}
 	
 - cc_token represents your payment method and cannot be retrieved later, *DO NOT LOSE IT*. 
