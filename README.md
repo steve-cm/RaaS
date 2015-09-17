@@ -432,10 +432,6 @@ Response Notes
 * "xrates" is a list of international exchange rates to USD. Tango Card updates the exchange rates for non-US items at least once a day. As part of the Get Rewards Catalog method, the API returns the exchange rates currently loaded into our system.
 
 Example request/response(s) below. There are four different example responses: US rewards with fixed denominations, US rewards with variable denominations, international fixed, and international variable.
-First Response Example - US Reward Fixed Denomination
-Second Example - US Reward Variable Denomination
-Third Example - International Reward Fixed Denomination
-Fourth Example - International Reward Variable Denomination
 
 Example request:
 
@@ -589,24 +585,25 @@ Example response, international fixed denomination:
 
 Example response, international variable denomination:
 
-			{
-				"description": "Swift Visa Europe",
-				"image_url": "https://dwwvg90koz96l.cloudfront.net/graphics/item-images/eurswiftvisa-eur-gift-card-custom.png",
-				"rewards"    : [
-					{
-						"type"         : "reward",         
-						"description"  : "European Swift Visa (Custom)",
-						"sku"          : "SWIFTVISA-E-V-STD",
-						"is_variable"  : true,
-						"currency_code": "EUR",
-						"available"    : true,
-						"min_price"    : 1,
-						"max_price"    : 200000,
-						"countries"    : ["DE","FR","IT","ES"]
-					}
-				]
-			}
-		]
+	{
+      		"description": "Amazon.ca*",
+      		"image_url": "https://d54ks1x7dxslx.cloudfront.net/graphics/item-images/amazon-ca-gift-card-custom.png",
+      		"rewards": [
+        	{
+          		"type": "reward",
+          		"description": "Amazon.ca Gift Certificate (Custom)",
+          		"sku": "AMZCA-E-V-STD",
+          		"is_variable": true,
+          		"min_price": 1,
+          		"max_price": 200000,
+          		"currency_code": "CAD",
+          		"available": true,
+          		"countries": [
+            			"CA"
+          			]
+        		}
+      		]
+    	},
 
 Example response, daily exchange rates:
 
@@ -649,17 +646,19 @@ Example request/response:
 	> Content-Type: application/json
 	> 
 	{
-		"customer"          : "CompanyA",
-		"account_identifier": "123456",
-		"recipient"         : {
-			"name" : "John Doe",
-			"email": "john.doe@example.com"
-		},
-		"sku"               : "TNGO-E-V-STD",
-		"amount"            : 1000,
-		"reward_message"    : "Thank you for participating in the XYZ survey.",
-		"reward_subject"    : "XYZ Survey, thank you...",
-		"reward_from"       : "Jon Survey Doe"
+  		"customer": "CompanyA",
+  		"account_identifier": "Account1",
+  		"campaign": "emailtemplate1",
+  		"recipient": {
+    			"name": "John To",
+    			"email": "johnto@email.com"
+  			},
+  		"sku": "TNGO-E-V-STD",
+  		"amount": 1000,
+  		"reward_from": "Joan From",
+  		"reward_subject": "Here is your reward!",
+  		"reward_message": "Way to go, John! Thanks!",
+  		"send_reward": true
 	}
 	
 	
@@ -671,30 +670,30 @@ Example request/response:
 	{
   		"success": true,
   		"order": {
-    			"order_id": "123-12345678-12",
-    			"account_identifier": "123456",
+    			"order_id": "115-0992-17",
+    			"account_identifier": "Account1",
     			"customer": "CompanyA",
     			"sku": "TNGO-E-V-STD",
     			"denomination": {
       				"value": 1000,
       				"currency_code": "USD"
-    			},
+    				},
     			"amount_charged": {
       				"value": 1000,
       				"currency_code": "USD"
-    			},
-    			"reward_message": "Way to go, John! Thank you!",
-    			"reward_subject": "Here's your reward!",
-    			"reward_from": "John From",
-    			"delivered_at": "2015-09-14T20:37:17+00:00",
+    				},
+    			"reward_message": "Way to go, John! Thanks!",
+    			"reward_subject": "Here is your reward!",
+    			"reward_from": "Joan From",
+    			"delivered_at": "2015-09-17T16:49:39+00:00",
     			"recipient": {
-      				"name": "John Doe",
-      				"email": "joe@email.com"
-			 },
+      				"name": "John To",
+      				"email": "johnto@email.com"
+    				},
     			"reward": {
-      				"token": "55f72ffdcb0497.77517620",
-      				"number": "7001204001394915814",
-      				"pin": "560299"
+      				"token": "55faef23ec33a2.36972978",
+      				"number": "7001004001338100213",
+      				"pin": "345038"
     			}
   		}
 	}
