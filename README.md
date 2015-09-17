@@ -713,30 +713,30 @@ Example success response for international variable SKU:
 	{
   		"success": true,
   		"order": {
-    			"order_id": "123-12345678-12",
-    			"account_identifier": "123456",
+    			"order_id": "115-09104-17",
+    			"account_identifier": "Account2",
     			"customer": "CompanyA",
-    			"sku": "AMZCA-E-V-STD",
+    			"sku": "AMZDE-E-V-STD",
     			"denomination": {
-      				"value": 1000,
-      				"currency_code": "CAD"
+      				"value": 500,
+      				"currency_code": "EUR"
     			},
     			"amount_charged": {
-      				"value": 755,
+      				"value": 564,
       				"currency_code": "USD"
     			},
     			"reward_message": "Way to go, John! Thank you!",
-    			"reward_subject": "Here's your reward!",
-    			"reward_from": "John From",
-    			"delivered_at": "2015-09-14T21:14:52+00:00",
+			"reward_subject": "Here is your reward!",
+    			"reward_from": "Jerry From",
+    			"delivered_at": "2015-09-17T23:51:08+00:00",
     			"recipient": {
-				"name": "John Doe",
-      				"email": "john@email.com"
+      				"name": "Harry To",
+      				"email": "harryto@email.com"
     			},
     			"reward": {
-      				"token": "55f738cd0a10f2.07381785",
-      				"number": "BGJZ-CVF5L4-B2BG"
-	  				"expiration": "2025-07-29"
+      				"token": "55fb51f14d3f85.97417356",
+      				"number": "8B5M-8P8BTG-U3HB",
+      				"expiration": "2025-09-18"
     			}
   		}
 	}
