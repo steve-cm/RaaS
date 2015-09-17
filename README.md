@@ -826,7 +826,7 @@ GET /raas/v1.1/orders/{order_id}
 
 Example request/response:
 
-	> GET /raas/v1.1/orders/123-12345678-12 HTTP/1.1
+	> GET /raas/v1.1/orders//115-0999-17 HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -838,24 +838,31 @@ Example request/response:
 	< Content-Length: 297
 	< 
 	{
-		"success": true,
-		"order"  : {
-			"order_id"          : "123-12345678-12",
-			"account_identifier": "12345678",
-			"sku"               : "TNGO-E-V-STD",
-			"amount"            : 1000,
-			"reward_message"    : "Thank you for participating in the XYZ survey.",
-			"reward_subject"    : "XYZ Survey, thank you...",
-			"reward_from"       : "Jon Survey Doe",
-			"delivered_at"      : "2013-03-12T15:17:16+00:00",
-			"recipient"         : {
-				"name" : "John Doe",
-				"email": "john.doe@example.com"
-			},
-		"reward": {
-			"token"        : "55b957d0c54b69.57249418",
-			"number"       : "27VP-CJRLS6-HFV7",
-			"expiration"   : "2025-07-29"
+  		"success": true,
+  		"order": {
+    			"order_id": "115-0999-17",
+    			"account_identifier": "Account2",
+    			"customer": "CompanyA",
+    			"sku": "AMZN-E-V-STD",
+    			"denomination": {
+      				"value": 2500,
+      				"currency_code": "USD"
+    				},
+    			"amount_charged": {
+      				"value": 2500,
+      				"currency_code": "USD"
+    				},
+    			"reward_message": "You're awesome! Keep it up!",
+    			"reward_subject": "Here is your reward!",
+    			"reward_from": "Jane From",
+    			"delivered_at": "2015-09-17T17:19:31+00:00",
+    			"recipient": {
+      				"name": "Jake To",
+      				"email": "jaketo@email.com"
+    				},
+    			"reward": {
+      				"token": "55faf623e97603.25696715",
+      				"number": "AR3E-T74NRL-VVQQ"
     			}
   		}
 	}
@@ -875,7 +882,7 @@ GET /raas/v1.1/orders{?start_date,end_date,offset,limit,customer,account_identif
 
 Example request/response:
 
-	> GET /raas/v1.1/orders?start_date=2013-03-01T00:00:00-08:00&end_date=2013-04-01T00:00:00-08:00&offset=0&limit=2&account_identifier=12345678&customer=CompanyA HTTP/1.1
+	> GET /raas/v1.1/orders?customer=CompanyA&account_identifier=Account2&offset=0&limit=10&start_date=2015-09-01T00:00:00&end_date=2015-10-01T23:59:59 HTTP/1.1
 	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
 	> Host: integration-api.tangocard.com
 	> Accept: */*
@@ -887,36 +894,103 @@ Example request/response:
 	< Content-Length: 603
 	< 
 	{
-		"success": true,
-		"orders" : [
-			{
-				"order_id"          : "123-12345678-00",
-				"account_identifier": "12345678",
-				"sku"               : "TNGO-E-V-STD",
-				"amount"            : 1000,
-				"reward_message"    : "Thank you for participating in the ABC survey.",
-				"reward_subject"    : null,
-				"delivered_at"      : "2013-03-11T22:20:56+00:00",
-				"recipient"         : {
-					"name" : "John Doe",
-					"email": "john.doe@example.com"
-				}
-			},
-			{
-				"order_id"          : "123-12345678-12",
-				"account_identifier": "12345678",
-				"sku"               : "TNGO-E-V-STD",
-				"amount"            : 1000,
-				"reward_message"    : "Thank you for participating in the XYZ survey.",
-				"reward_subject"    : "XYZ Survey, thank you...",
-				"reward_from"       : "Jon Survey Doe",
-				"delivered_at"      : "2013-03-12T15:17:16+00:00",
-				"recipient"         : {
-					"name" : "John Doe",
-					"email": "john.doe@example.com"
-				}
-			}
-		]
+  		"success": true,
+  		"offset": 0,
+  		"limit": 10,
+  		"start_date": "2015-09-01T00:00:00",
+  		"end_date": "2015-10-01T23:59:59",
+  		"result_count": 4,
+  		"total_count": 4,
+  		"orders": [
+    		{
+      			"order_id": "115-0998-17",
+			"account_identifier": "Account2",
+      			"customer": "CompanyA",
+      			"sku": "TNGO-E-V-STD",
+      			"denomination": {
+        			"value": 100000,
+        			"currency_code": "USD"
+      				},
+      			"amount_charged": {
+        			"value": 100000,
+        			"currency_code": "USD"
+      				},
+      			"reward_message": null,
+      			"reward_subject": null,
+      			"reward_from": null,
+      			"delivered_at": "2015-09-17T17:19:22+00:00",
+      			"recipient": {
+        			"name": "",
+        			"email": "AUTOBIND"
+      			}
+    		},
+    		{
+      			"order_id": "115-0999-17",
+      			"account_identifier": "Account2",
+      			"customer": "CompanyA",
+      			"sku": "AMZN-E-V-STD",
+      			"denomination": {
+        			"value": 2500,
+        			"currency_code": "USD"
+      				},
+      			"amount_charged": {
+        			"value": 2500,
+        			"currency_code": "USD"
+      				},
+      			"reward_message": "You're awesome! Keep it up!",
+      			"reward_subject": "Here is your reward!",
+      			"reward_from": "Jane From",
+      			"delivered_at": "2015-09-17T17:19:31+00:00",
+      			"recipient": {
+        			"name": "Jake To",
+        			"email": "jaketo@email.com"
+      			}
+    		},
+    		{
+      			"order_id": "115-09100-17",
+      			"account_identifier": "Account2",
+      			"customer": "CompanyA",
+      			"sku": "TNGO-E-V-STD",
+      			"denomination": {
+        			"value": 1000,
+        			"currency_code": "USD"
+      				},
+      			"amount_charged": {
+        			"value": 1000,
+        			"currency_code": "USD"
+      				},
+      			"reward_message": "Way to go, John! Thank you!",
+      			"reward_subject": "Here is your reward!",
+      			"reward_from": "Joan From",
+      			"delivered_at": "2015-09-17T17:20:12+00:00",
+      			"recipient": {
+        			"name": "John To",
+        			"email": "johnto@email.com"
+      			}
+    		},
+    		{
+      			"order_id": "115-09101-17",
+      			"account_identifier": "Account2",
+      			"customer": "CompanyA",
+      			"sku": "AMZCA-E-V-STD",
+      			"denomination": {
+        			"value": 1500,
+        			"currency_code": "CAD"
+      				},
+      			"amount_charged": {
+        			"value": 1133,
+        			"currency_code": "USD"
+      				},
+      			"reward_message": "Way to go, John! Thank you!",
+      			"reward_subject": "Here is your reward!",
+      			"reward_from": "Jerry From",
+      			"delivered_at": "2015-09-17T17:21:23+00:00",
+      			"recipient": {
+        			"name": "Harry To",
+        			"email": "harryto@email.com"
+      				}
+    			}
+  		]
 	}
 
 # Responses
