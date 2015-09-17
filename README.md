@@ -1308,13 +1308,11 @@ A list of rewards.
 		* rewards : (array) An array of objects defined as:
 			* description : (string) A human-readable description of the reward.
 			* sku : (string) The SKU used when ordering.
-			* currency_type : (string) The currency of the reward (e.g. USD).
 			* unit_price : (integer) The price of the reward (negative values denote variable prices).
 			* available : (boolean) Whether the reward is currently available.
 			* min_price : (integer) For variable price rewards this denotes the minimum price available. Field may not be present for non-variable.
 			* max_price : (integer) For variable price rewards this denotes the maximum price available. Field may not be present for non-variable.
 			* denomination : (integer) For fixed price rewards, representing the face value. Field will not be present for variable.
 			* currency_code : (string) For fixed price rewards, this is the 3-letter currency code of the denomination.  Field will not be present for variable.
-			* locale : (string) For fixed price rewards, this denotes the main region/culture of the denomination. (e.g., "en_US") This is provided for ease of regional formatting.  Field will not be present for variable.
 		
 
