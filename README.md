@@ -63,15 +63,15 @@ Our API is made to support multiple account structures. Following [Platform Setu
 * REGISTER A CREDIT CARD - Securely save up to 10 credit cards to accounts with our third-party payment partner
 * FUND AN ACCOUNT - Call up your saved credit card(s) and use them to fund accounts
 * DELETE A CREDIT CARD - Remove saved credit cards for good
-* GET THE CATALOG - Call up pur catalog of e-gift cards, donations, prepaid visas, and bitcoin e-gift cards
-* PLACE AN ORDER - Place and order for a reward. Choose whether Tango Card delivers the reward via email
+* GET THE CATALOG - Call up our catalog of e-gift cards, donations, prepaid visas, and bitcoin e-gift cards
+* PLACE AN ORDER - Place an order for a reward. Choose whether Tango Card delivers the reward via email
 * RESEND AN ORDER - Simply resend an order that has already been placed
 * GET ORDER INFORMATION - Call up order information about an individual order
 * GET ORDER HISTORY - Call up a list of orders for an account
 
 ## What Changed in v1.1
 
-The goal of the RaaS API v1.1 is to prepare our API to support global reward and incentive programs in localized currencies and languages.
+The goal of the RaaS API v1.1 is to support global reward and incentive programs in localized currencies and languages.
 
 ### Summary of Key Changes
 
@@ -143,7 +143,7 @@ Platform Key: 5xItr3dMDlEWAa9S4s7vYh7kQ01d5SFePPUoZZiK/vMfbo3A5BvJLAmD4tI=
 Platform Authorization: 
 Basic VGFuZ29UZXN0OjV4SXRyM2RNRGxFV0FhOVM0czd2WWg3a1EwMWQ1U0ZlUFBVb1paaUsvdk1mYm8zQTVCdkpMQW1ENHRJPQ==
 
-An important note about *Test Codes*: Rewards delivered from Tango Card's Sandbox environment contain sample codes and have no monetary or reemable value. Additionally, please note that some Amazon.com denominations, like $20, may fail in the Sandbox environment. This is intentional behavior for the purpose of simulating an API error. If you encounter an error when testing an Amazon.com code, please try another denomination. Be assured that Amazon.com orders work consistently in the production environment. 
+An important note about *Test Codes*: Rewards delivered from Tango Card's Sandbox environment contain sample codes and have no monetary or redeemable value. Additionally, please note that some Amazon.com denominations, like $20, may fail in the Sandbox environment. This is intentional behavior for the purpose of simulating an API error. If you encounter an error when testing an Amazon.com code, please try another denomination. Be assured that Amazon.com orders work consistently in the production environment. 
 
 When you have completed your development and are ready for production testing / launch you can request production credentials.
 
@@ -157,7 +157,7 @@ The endpoint for the RESTful interface on the Production environment is https://
 
 ### RaaS API credentials versus TangoCard.com user credentials
 
-Our now-depricated legacy SDKs used username and password credentials (like those used for user accounts on our website). If you are upgrading to the RaaS API from one of our legacy SDKs, please note that our RaaS API uses a Platform Name and Platform Key that need to be created for your RaaS API account and you can not mix the credentials for TangoCard.com site with the credentials for the RaaS API.
+Our now-deprecated legacy SDKs used username and password credentials (like those used for user accounts on our website). If you are upgrading to the RaaS API from one of our legacy SDKs, please note that our RaaS API uses a Platform Name and Platform Key that need to be created for your RaaS API account and you can not mix the credentials for TangoCard.com site with the credentials for the RaaS API.
 
 ### System Notes
 
@@ -221,7 +221,7 @@ The following is a section of methods related to the platform's accounts.
 * An "account identifier" in the system can be whatever is convenient for the platform as long as it adheres to the following rules:
  * Between 5 and 96 characters in length (inclusive).
  * Must be made up exclusively of: alphanumeric (A-Z, a-z, 0-9), underscore (_), dash (-), or plus (+).
- * Must NOT contain characters invalid in a URI. Examples include, but are not limited to: . , ! &. Spaces are not allowed either.
+ * Must NOT contain characters invalid in a URI. Examples include, but are not limited to: . , ! &. Spaces are not allowed either. A full account of character rules can be found [here](#https://tools.ietf.org/html/rfc3986#section-2.2).
  * Must be unique to the company.
 * A "customer" is a mechanism for denoting a company, department, etc an account belongs to. 
 
@@ -422,10 +422,11 @@ Example request/response:
 GET /raas/v1.1/rewards
 
 Response Notes
-* "type" denotes whether the "brand" is a "reward" (e-gift card or prepaid card) or a "npo" (non-profit donation)
+* "type" denotes whether the "brand" (catalog item) is a "reward" (e-gift card or prepaid card) or a "npo" (non-profit donation)
 * "description" is the brand approved name of the reward
 * "sku" is the unique ID to use when placing an order
-* "is-variable" denotes whether a brand has a variable range of values ("true") or has fixed denominations to choose from ("false")
+* A variable range of values means that a brand can be purchased for any denomination between a minimum value and a maximum value.
+* "is-variable" denotes whether a brand has a variable range of values ("true") or has fixed denominations to choose from ("false").
 * If a brand is variable, the range is defined, in cents, by "min_price" and "max_price"
 * If a brand is fixed, the face value of the brand is defined, in cents, by "denomination"
 * "countries" uses a two digit country code to define the languages the brand is available in. "countries" is an array.
@@ -698,11 +699,11 @@ Example request/response:
   		}
 	}
 
-For international variable skus, there will be an expiration date ("expiration") in the successful response, if applicable. The format for expiration date is ISO6801 standard date format, example: 2016-06-19 (Year-Month-Day).
+For international variable SKUs, there will be an expiration date ("expiration") in the successful response, if applicable. The format for expiration date is ISO6801 standard date format, example: 2016-06-19 (Year-Month-Day).
 
 *Expiration dates in email templates will appear in localized format, for example: 2016-06-19 could be 2016年6月19日. We are using this PHP library to format international dates: http://php.net/manual/en/class.intldateformatter.php
 
-Example success response for international variable sku:
+Example success response for international variable SKU:
 
 	< HTTP/1.1 201 Created
 	< Content-Type: application/json; charset=utf-8
@@ -747,7 +748,7 @@ The Resend functionality allows Tango Card RaaS API Platform partners to resend 
 
 Format:
 
-POST raas/v1/orders/{ORDER_NUMBER}/resend
+POST raas/v1.1/orders/{ORDER_NUMBER}/resend
 
 RULES & IMPORTANT NOTES
 
@@ -781,7 +782,7 @@ Example request/response:
         	"success": true
     	}
 
-Error Reponses:
+Error Responses:
 
 Cannot send more than once every 24 hours
 Resend functionality is limited to once every 24 hours per order. The 24 hour period starts at the last recorded sent time in UTC.
