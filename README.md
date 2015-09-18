@@ -17,7 +17,7 @@
 		- [SSL/TLS](#ssltls)
 - [Methods](#methods)
 	- [Create Account](#create-account)
-	- [Get Account Information](#get-account-information)
+	- [Get Account and Balance Information](#get-account-and-balance-information)
 	- [Register a Credit Card](#register-a-credit-card)
 	- [Delete a Credit Card](#delete-a-credit-card)
 	- [Fund an Account](#fund-an-account)
@@ -173,6 +173,8 @@ Our now-deprecated legacy SDKs used username and password credentials (like thos
 
 Retries - Network vagaries, infrastructure and supplier factors mean occasional network errors are inevitable and must be planned for. For this reason we recommend that you build an "exponential back off" or similar retry algorithm in which the timeout value for retry increases after each unsuccessful attempt. Exponential retries are well-documented elsewhere and beyond the scope of this document.
 
+Balance Alerts - The RaaS API allows you to check an account balance at any time with the [Get Account and Balance Information](#get-account-and-balance-information) method, but it does not have low balance alerts at this time. We recommend building in your own balance check and alert system if you anticipate the need to re-fund accounts on a regular basis. 
+
 ### SSL/TLS
 
 All communication with Tango Card's RaaS API is handled over SSL, a commonly-used protocol for managing secured message transmissions on the Internet. As a result, clients of the RaaS API need to ensure that you have the [chain (intermediate) certificate](http://en.wikipedia.org/wiki/Intermediate_certificate_authorities) in place on your server. This is important as not having the chain certificate in place will (at best) disallow communication or (at worst) expose you to the potential for [man-in-the-middle attacks](http://en.wikipedia.org/wiki/Man-in-the-middle_attack). To accomplish this, we recommend you add the CA's cert to your system's trusted list. If that's not possible, an alternative is to include the certificate in your application. Major CAs deliver a ‘bundled’ file containing the complete certificate chain providing a single installation method for the certificate.
@@ -268,7 +270,7 @@ Example request/response:
 
 
 
-### Get Account Information
+### Get Account and Balance Information
 
 GET /raas/v1.1/accounts/{customer}/{account_identifier}
 
