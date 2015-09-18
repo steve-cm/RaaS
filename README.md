@@ -105,7 +105,7 @@ API Methods with no changes between v1.0 and v1.1
 * Order Request (/orders)
 * Resend an Order (/resend)
 
-Note: RaaS v1.0 platform customers that convert to v1.1 will continue to be able use the order details and order history calls for transactions that occurred on v1.0. For Order History, the "denomination" value will appear as null for orders placed in v1.0.
+Note: v1.1 order details and order history responses will include transactions placed on v1.0. For Order History, the "denomination" value will appear as null for orders placed in v1.0.
 
 
 ## Platform Setup and Authentication
