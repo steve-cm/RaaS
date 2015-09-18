@@ -114,12 +114,12 @@ Note: v1.1 order details and order history responses will include transactions p
 
 The RaaS API is capable of supporting rewards and incentives for multiple platform structures.
 
-One example is a 1 to 1 structure, wherein there is one platform, one company, and one account purchasing rewards:
+If you are a company sending all the rewards for your platform from one rewards account then this 1 to 1 structure is for you:
 
 ![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-1-to-1-Accounts2.png "RaaS API 1 to 1 Account Structure")
 
 
-A second example is a structure with multiple companies, each with their own account or accounts to purchase rewards:
+If you are hosting multiple companies on your platform and you want them to be able to hold their own reward accounts then this multi-company and account structure will be what you're looking for:
 
 ![alt text](https://www.tangocard.com/wp-content/themes/tc/uploads/Tango-Card-RaaS-API-Multiple-Companies-and-Accounts21.png "RaaS API Multiple Companies and Accounts")
 
@@ -422,12 +422,12 @@ Example request/response:
 GET /raas/v1.1/rewards
 
 Response Notes
-* "type" denotes whether the "brand" (catalog item) is a "reward" (e-gift card or prepaid card) or a "npo" (non-profit donation)
-* "description" is the brand approved name of the reward
-* "sku" is the unique ID to use when placing an order
+* "type" denotes whether the "brand" (catalog item) is a "reward" (e-gift card or prepaid card) or a "npo" (non-profit donation).
+* "description" is the brand approved name of the reward (may change over time).
+* "sku" is the unique ID to use when placing an order.
 * A variable range of values means that a brand can be purchased for any denomination between a minimum value and a maximum value.
 * "is-variable" denotes whether a brand has a variable range of values ("true") or has fixed denominations to choose from ("false").
-* If a brand is variable, the range is defined, in cents, by "min_price" and "max_price"
+* If a brand is variable, the range is defined, in cents, by "min_price" and "max_price".
 * If a brand is fixed, the face value of the brand is defined, in cents, by "denomination"
 * "countries" uses a two digit country code to define the languages the brand is available in. "countries" is an array.
 * "xrates" is a list of international exchange rates to USD. Tango Card updates the exchange rates for non-US items at least once a day. As part of the Get Rewards Catalog method, the API returns the exchange rates currently loaded into our system.
