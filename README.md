@@ -236,7 +236,7 @@ The input object is defined by [this JSON-Schema](account_create.schema.json).
 Example request/response:
 
 	> POST /raas/v1.1/accounts HTTP/1.1
-	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
+	> Authorization: Basic VGFuF29UZXN0OjV4SXRyM2RNRGxFV0FhOHM0czd2WWg3a1EwMWQ1U0ZlUFCVb1paaUsvdk1mYm8zQSVCdkpMQW1ENHRJPP==
 	> Host: integration-api.tangocard.com
 	> Accept: */*
 	> Content-Length: 72
@@ -275,7 +275,7 @@ GET /raas/v1.1/accounts/{customer}/{account_identifier}
 Example request/response:
 
 	> GET /raas/v1.1/accounts/CompanyA/Account1 HTTP/1.1
-	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
+	> Authorization: Basic VGFuF29UZXN0OjV4SXRyM2RNRGxFV0FhOHM0czd2WWg3a1EwMWQ1U0ZlUFCVb1paaUsvdk1mYm8zQSVCdkpMQW1ENHRJPP==
 	> Host: integration-api.tangocard.com
 	> Accept: */*
 	> 
@@ -437,7 +437,7 @@ Example request/response(s) below. There are four different example responses: U
 Example request:
 
 	> GET /raas/v1.1/rewards HTTP/1.1
-	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
+	> Authorization: Basic VGFuF29UZXN0OjV4SXRyM2RNRGxFV0FhOHM0czd2WWg3a1EwMWQ1U0ZlUFCVb1paaUsvdk1mYm8zQSVCdkpMQW1ENHRJPP==
 	> Host: integration-api.tangocard.com
 	> Accept: */*
 	>
@@ -640,7 +640,7 @@ The input object is defined by [this JSON-Schema](order_create.schema.json).
 Example request/response:
 
 	> POST /raas/v1.1/orders HTTP/1.1
-	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
+	> Authorization: Basic VGFuF29UZXN0OjV4SXRyM2RNRGxFV0FhOHM0czd2WWg3a1EwMWQ1U0ZlUFCVb1paaUsvdk1mYm8zQSVCdkpMQW1ENHRJPP==
 	> Host: integration-api.tangocard.com
 	> Accept: */*
 	> Content-Length: 192
@@ -770,7 +770,7 @@ RULES & IMPORTANT NOTES
 Example request/response:
 
    	> POST /raas/v1.1/orders/123-12345678-12/resend HTTP/1.1
-    	> Authorization: Basic C0FFEEC0FFEEC0FFXXXXXXXX
+    	> Authorization: Basic VGFuF29UZXN0OjV4SXRyM2RNRGxFV0FhOHM0czd2WWg3a1EwMWQ1U0ZlUFCVb1paaUsvdk1mYm8zQSVCdkpMQW1ENHRJPP==
     	> Host: integration-api.tangocard.com
     	> Accept: */*
     	> 
@@ -828,7 +828,7 @@ GET /raas/v1.1/orders/{order_id}
 Example request/response:
 
 	> GET /raas/v1.1/orders//115-0999-17 HTTP/1.1
-	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
+	> Authorization: Basic VGFuF29UZXN0OjV4SXRyM2RNRGxFV0FhOHM0czd2WWg3a1EwMWQ1U0ZlUFCVb1paaUsvdk1mYm8zQSVCdkpMQW1ENHRJPP==
 	> Host: integration-api.tangocard.com
 	> Accept: */*
 	> 
@@ -884,7 +884,7 @@ GET /raas/v1.1/orders{?start_date,end_date,offset,limit,customer,account_identif
 Example request/response:
 
 	> GET /raas/v1.1/orders?customer=CompanyA&account_identifier=Account2&offset=0&limit=10&start_date=2015-09-01T00:00:00&end_date=2015-10-01T23:59:59 HTTP/1.1
-	> Authorization: Basic C0FFEEC0FFEEC0FFEEC0FFEE
+	> Authorization: Basic VGFuF29UZXN0OjV4SXRyM2RNRGxFV0FhOHM0czd2WWg3a1EwMWQ1U0ZlUFCVb1paaUsvdk1mYm8zQSVCdkpMQW1ENHRJPP==
 	> Host: integration-api.tangocard.com
 	> Accept: */*
 	> 
