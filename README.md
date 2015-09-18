@@ -98,7 +98,7 @@ Order Details & Order History Changes
 API Methods with no changes between v1.0 and v1.1
 * Platform set up
 * Create Account (/accounts)
-* Get Account Information (/<account-id>)
+* Get Account Information (/"account-id")
 * Register a Credit Card (/cc_register)
 * Fund Account (/cc_fund)
 * Delete a Credit Card (/cc_unregister)
