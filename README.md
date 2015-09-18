@@ -173,7 +173,7 @@ Our now-deprecated legacy SDKs used username and password credentials (like thos
 
 Retries - Network vagaries, infrastructure and supplier factors mean occasional network errors are inevitable and must be planned for. For this reason we recommend that you build an "exponential back off" or similar retry algorithm in which the timeout value for retry increases after each unsuccessful attempt. Exponential retries are well-documented elsewhere and beyond the scope of this document.
 
-Balance Alerts - The RaaS API allows you to check an account balance at any time with the [Get Account and Balance Information](#get-account-and-balance-information) method, but it does not have low balance alerts at this time. We recommend building in your own balance check and alert system if you anticipate the need to re-fund accounts on a regular basis. 
+Balance Alerts - The RaaS API allows you to check an account balance at any time with the [Get Account and Balance Information](#get-account-and-balance-information) method, but it does not have low balance alerts at this time. We recommend building in a balance check and alert system if you anticipate the need to re-fund accounts on a regular basis. 
 
 ### SSL/TLS
 
