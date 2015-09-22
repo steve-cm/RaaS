@@ -23,7 +23,7 @@
 	- [Fund an Account](#fund-an-account)
 	- [Get Reward Catalog](#get-reward-catalog)
 	- [Place an Order](#place-an-order)
-	- [Resend a Reward Email](#resend-a-reward email)
+	- [Resend a Reward Email](#resend-a-reward-email)
 	- [Get Order Information](#get-order-information)
 	- [Get Order History](#get-order-history)
 - [Responses](#responses)
