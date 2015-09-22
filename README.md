@@ -7,9 +7,8 @@
 - [RaaS API Introduction - Version 1.1](#raas-api---version-1.1)
 	- [What is RaaS](#what-is-the-raas-api)
 	- [What changed in v1.1](#what-changed-in-v11)
-	- [Platform Setup](#platform-setup-and-authentication)
+	- [Platform Setup and Authentication](#platform-setup-and-authentication)
 		- [Platform Configurations](#platform-configurations)
-		- [Authentication](#authentication)
 		- [Sandbox Credentials](#sandbox-credentials)
 		- [Production Credentials](#production-credentials)
 		- [System Notes](#system-notes)
@@ -56,7 +55,7 @@
 
 With our RESTful RaaS API you can integrate a global reward or incentive program into your platform. 
 
-Our API is made to support multiple account structures. Following [Platform Setup](#platform-setup) and [Authentication](#authentication), the following methods are available:
+Our API is made to support multiple account structures. Following [Platform Setup and Authentication](#platform-setup-and-authentication), the following methods are available:
 
 * CREATE AN ACCOUNT - Versatility to create multiple account structures to support many use cases
 * GET ACCOUNT INFORMATION - Call up information about accounts in your platform
