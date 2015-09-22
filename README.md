@@ -23,7 +23,7 @@
 	- [Fund an Account](#fund-an-account)
 	- [Get Reward Catalog](#get-reward-catalog)
 	- [Place an Order](#place-an-order)
-	- [Resend an Order](#resend-an-order)
+	- [Resend a Reward Email](#resend-a-reward email)
 	- [Get Order Information](#get-order-information)
 	- [Get Order History](#get-order-history)
 - [Responses](#responses)
@@ -65,7 +65,7 @@ Our API is made to support multiple account structures. Following [Platform Setu
 * DELETE A CREDIT CARD - Remove saved credit cards for good
 * GET THE CATALOG - Call up our catalog of e-gift cards, donations, prepaid visas, and bitcoin e-gift cards
 * PLACE AN ORDER - Place an order for a reward. Choose whether Tango Card delivers the reward via email
-* RESEND AN ORDER - Simply resend an order that has already been placed
+* RESEND A REWARD EMAIL - Simply resend a reward that has already been placed
 * GET ORDER INFORMATION - Call up order information about an individual order
 * GET ORDER HISTORY - Call up a list of orders for an account
 
@@ -103,7 +103,7 @@ API Methods with no changes between v1.0 and v1.1
 * Fund Account (/cc_fund)
 * Delete a Credit Card (/cc_unregister)
 * Order Request (/orders)
-* Resend an Order (/resend)
+* Resend a Reward Email (/resend)
 
 Note: v1.1 order details and order history responses will include transactions placed on v1.0. For Order History, the "denomination" value will appear as null for orders placed in v1.0.
 
@@ -744,7 +744,7 @@ Example success response for international variable SKU:
 	}
 
 
-### Resend an Order
+### Resend a Reward Email
 
 The Resend functionality allows Tango Card RaaS API Platform partners to resend reward emails to the original recipient on demand. This may be useful if a recipient reports that they never received or cannot find a reward email. 
 
@@ -764,7 +764,7 @@ RULES & IMPORTANT NOTES
 
 5. You will need the original order number in order to perform the resend. The Tango Card Order History call allows for a search of past orders and includes the order number for order result.
 
-6. Orders can only be resent to the original recipient. If an administrator needs to verify reward information for a given order, consider using the Get Order Information call instead of the Resend an Order call.
+6. Orders can only be resent to the original recipient. If an administrator needs to verify reward information for a given order, consider using the Get Order Information call instead of the Resend a Reward Email call.
 
 7. Resending an email does not guarantee delivery. If the recipient does not receive an email due to spam filter settings, corporate firewalls, etc. resending an email will not get them their reward. The underlying problem will need to be determined and resolved. 
 
