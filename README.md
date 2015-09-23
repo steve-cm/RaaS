@@ -126,7 +126,7 @@ If you are hosting multiple companies on your platform and you want them to be a
 
 You can test drive the RaaS API without writing a single line of code!  
 
-Using the [RaaS API Test Console](https://integration-www.tangocard.com/raas_api_console/), you can easily go through each method supported in our API and see the requests and the responses for each of these resources. When you are comfortable with the concepts you can begin coding by requesting Sandbox credentials for our test site. Then, if you run into problems during the coding phase you can come back to our console and compare your JSON to our requests and responses.
+Using the [RaaS API Test Console](https://www.tangocard.com/raas_api_console/v1.1/), you can easily go through each method supported in our API and see the requests and the responses for each of these resources. When you are comfortable with the concepts you can begin coding by requesting Sandbox credentials for our test site. Then, if you run into problems during the coding phase you can come back to our console and compare your JSON to our requests and responses.
 
 ### Sandbox credentials
 
