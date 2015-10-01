@@ -5,7 +5,7 @@
 ### The documentation for the RaaS API has moved to the Tango Card website!
 
 
-Find it here: [RaaS API Documentation](https://www.tangocard.com/docs/raas-api/)
+### Find it here: [RaaS API Documentation](https://www.tangocard.com/docs/raas-api/)
 
 
 With the RESTful RaaS API you can integrate a global reward or incentive program into your platform. 
