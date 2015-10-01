@@ -7,9 +7,8 @@
 - [RaaS API Introduction - Version 1.1](#raas-api---version-1.1)
 	- [What is RaaS](#what-is-the-raas-api)
 	- [What changed in v1.1](#what-changed-in-v11)
-	- [Platform Setup](#platform-setup-and-authentication)
+	- [Platform Setup and Authentication](#platform-setup-and-authentication)
 		- [Platform Configurations](#platform-configurations)
-		- [Authentication](#authentication)
 		- [Sandbox Credentials](#sandbox-credentials)
 		- [Production Credentials](#production-credentials)
 		- [System Notes](#system-notes)
@@ -23,7 +22,7 @@
 	- [Fund an Account](#fund-an-account)
 	- [Get Reward Catalog](#get-reward-catalog)
 	- [Place an Order](#place-an-order)
-	- [Resend an Order](#resend-an-order)
+	- [Resend a Reward Email](#resend-a-reward-email)
 	- [Get Order Information](#get-order-information)
 	- [Get Order History](#get-order-history)
 - [Responses](#responses)
@@ -56,7 +55,7 @@
 
 With our RESTful RaaS API you can integrate a global reward or incentive program into your platform. 
 
-Our API is made to support multiple account structures. Following [Platform Setup](#platform-setup) and [Authentication](#authentication), the following methods are available:
+Our API is made to support multiple account structures. Following [Platform Setup and Authentication](#platform-setup-and-authentication), the following methods are available:
 
 * CREATE AN ACCOUNT - Versatility to create multiple account structures to support many use cases
 * GET ACCOUNT INFORMATION - Call up information about accounts in your platform
@@ -65,7 +64,7 @@ Our API is made to support multiple account structures. Following [Platform Setu
 * DELETE A CREDIT CARD - Remove saved credit cards for good
 * GET THE CATALOG - Call up our catalog of e-gift cards, donations, prepaid visas, and bitcoin e-gift cards
 * PLACE AN ORDER - Place an order for a reward. Choose whether Tango Card delivers the reward via email
-* RESEND AN ORDER - Simply resend an order that has already been placed
+* RESEND A REWARD EMAIL - Simply resend a reward that has already been placed
 * GET ORDER INFORMATION - Call up order information about an individual order
 * GET ORDER HISTORY - Call up a list of orders for an account
 
@@ -98,12 +97,12 @@ Order Details & Order History Changes
 API Methods with no changes between v1.0 and v1.1
 * Platform set up
 * Create Account (/accounts)
-* Get Account Information (/"account-id")
+* Get Account Information (/{account-id})
 * Register a Credit Card (/cc_register)
 * Fund Account (/cc_fund)
 * Delete a Credit Card (/cc_unregister)
 * Order Request (/orders)
-* Resend an Order (/resend)
+* Resend a Reward Email (/resend)
 
 Note: v1.1 order details and order history responses will include transactions placed on v1.0. For Order History, the "denomination" value will appear as null for orders placed in v1.0.
 
@@ -127,7 +126,7 @@ If you are hosting multiple companies on your platform and you want them to be a
 
 You can test drive the RaaS API without writing a single line of code!  
 
-Using the [RaaS API Test Console](https://integration-www.tangocard.com/raas_api_console/), you can easily go through each method supported in our API and see the requests and the responses for each of these resources. When you are comfortable with the concepts you can begin coding by requesting Sandbox credentials for our test site. Then, if you run into problems during the coding phase you can come back to our console and compare your JSON to our requests and responses.
+Using the [RaaS API Test Console](https://www.tangocard.com/raas_api_console/v1.1/), you can easily go through each method supported in our API and see the requests and the responses for each of these resources. When you are comfortable with the concepts you can begin coding by requesting Sandbox credentials for our test site. Then, if you run into problems during the coding phase you can come back to our console and compare your JSON to our requests and responses.
 
 ### Sandbox credentials
 
@@ -744,7 +743,7 @@ Example success response for international variable SKU:
 	}
 
 
-### Resend an Order
+### Resend a Reward Email
 
 The Resend functionality allows Tango Card RaaS API Platform partners to resend reward emails to the original recipient on demand. This may be useful if a recipient reports that they never received or cannot find a reward email. 
 
@@ -764,7 +763,7 @@ RULES & IMPORTANT NOTES
 
 5. You will need the original order number in order to perform the resend. The Tango Card Order History call allows for a search of past orders and includes the order number for order result.
 
-6. Orders can only be resent to the original recipient. If an administrator needs to verify reward information for a given order, consider using the Get Order Information call instead of the Resend an Order call.
+6. Orders can only be resent to the original recipient. If an administrator needs to verify reward information for a given order, consider using the Get Order Information call instead of the Resend a Reward Email call.
 
 7. Resending an email does not guarantee delivery. If the recipient does not receive an email due to spam filter settings, corporate firewalls, etc. resending an email will not get them their reward. The underlying problem will need to be determined and resolved. 
 
